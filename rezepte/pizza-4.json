@@ -1,0 +1,140 @@
+{
+  "id": "pizza-4",
+  "title": "Pizza – 4 Teiglinge",
+  "category": "Pizza",
+  "portions": 4,
+  "ingredients": [
+    {
+      "stage": "Vorteig",
+      "name": "Lievito Madre",
+      "amount": 80,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Hefe",
+      "amount": 2,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Wasser",
+      "amount": 200,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Roggen Vollkorn",
+      "amount": 50,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Pizzamehl Aldi",
+      "amount": 150,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
+      "name": "Wasser",
+      "amount": 131.5,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
+      "name": "Pizzamehl Aldi",
+      "amount": 50,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
+      "name": "Pizzamehl Rieger",
+      "amount": 260,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
+      "name": "Salz",
+      "amount": 15,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
+      "name": "Olivenöl",
+      "amount": 10,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    {
+      "day": 1,
+      "time": "10:00",
+      "duration": "01:00",
+      "title": "Vorteig",
+      "text": "Alle Zutaten für den Vorteig vermischen.",
+      "timer": 60
+    },
+    {
+      "day": 1,
+      "time": "11:00",
+      "duration": "00:00",
+      "title": "Hauptteig",
+      "text": "Vorteig, Wasser und Mehl vermischen und 4 Minuten verkneten. Salz und Olivenöl dazugeben und zu Ende kneten (Fensterprobe). Danach 1 Stunde bei Raumtemperatur, anschließend über Nacht in den Kühlschrank."
+    },
+    {
+      "day": 2,
+      "time": "08:00",
+      "duration": "00:00",
+      "title": "Pizzaballen formen",
+      "text": "4 Pizzaballen formen und in den Kühlschrank geben."
+    },
+    {
+      "day": 2,
+      "time": "14:00",
+      "duration": "04:00",
+      "title": "Stückgare",
+      "text": "Teiglinge aus dem Kühlschrank nehmen und bei 23 °C reifen lassen.",
+      "timer": 240
+    },
+    {
+      "day": 2,
+      "time": "17:40",
+      "duration": "00:20",
+      "title": "Ofen vorheizen",
+      "text": "Ofen und Pizzastein auf 300 °C aufheizen.",
+      "timer": 20
+    },
+    {
+      "day": 2,
+      "time": "18:00",
+      "duration": "00:08",
+      "title": "Pizza 1 backen",
+      "text": "Ausdehnen, belegen und backen. Die Pizza braucht etwa 5 Minuten im Ofen; danach den Stein kurz wieder aufheizen lassen.",
+      "timer": 8
+    },
+    {
+      "day": 2,
+      "time": "18:08",
+      "duration": "00:08",
+      "title": "Pizza 2 backen",
+      "text": "Ausdehnen, belegen und backen.",
+      "timer": 8
+    },
+    {
+      "day": 2,
+      "time": "18:16",
+      "duration": "00:08",
+      "title": "Pizza 3 backen",
+      "text": "Ausdehnen, belegen und backen.",
+      "timer": 8
+    },
+    {
+      "day": 2,
+      "time": "18:24",
+      "duration": "00:08",
+      "title": "Pizza 4 backen",
+      "text": "Ausdehnen, belegen und backen.",
+      "timer": 8
+    }
+  ]
+}

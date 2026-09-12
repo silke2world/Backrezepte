@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rezept</title><link rel="stylesheet" href="style.css"></head><body>
+<header><a href="index.html">← Mein Backbuch</a></header><main id="app"></main>
+<script>
+const id=new URLSearchParams(location.search).get("id")||"pizza-4";
+fetch("rezepte/"+id+".json").then(r=>r.json()).then(r=>{
+document.title=r.title;
+const stages=[...new Set(r.ingredients.map(x=>x.stage))];
+document.getElementById("app").innerHTML=`
+<section class="recipe-head"><span class="tag">${r.category}</span><h1>${r.title}</h1><p>${r.portions} Teiglinge</p></section>
+<section class="panel"><h2>Zutaten</h2>${stages.map(s=>`<h3>${s}</h3><ul>${r.ingredients.filter(x=>x.stage===s).map(x=>`<li><b>${x.amount.toLocaleString('de-DE')}</b> ${x.unit} ${x.name}</li>`).join("")}</ul>`).join("")}</section>
+<section class="panel"><div class="mode-head"><h2>Backmodus</h2><button id="start">Backmodus aktivieren</button></div><div id="timeline"></div></section>`;
+const timeline=document.getElementById("timeline");
+function draw(){timeline.innerHTML=r.steps.map((s,i)=>`<div class="step ${localStorage.getItem(r.id+"-"+i)==="1"?"done":""}">
+<div class="time">${s.time}<small>${s.duration}</small></div><div class="stepbody"><h3>${s.title}</h3><p>${s.text}</p>${s.timer?`<button class="timer" data-sec="${s.timer}">Timer ${s.duration} starten</button>`:""}<button class="check" data-i="${i}">✓ Erledigt</button></div></div>`).join("");
+timeline.querySelectorAll(".check").forEach(b=>b.onclick=()=>{const i=b.dataset.i;localStorage.setItem(r.id+"-"+i,"1");draw()});
+timeline.querySelectorAll(".timer").forEach(b=>b.onclick=()=>startTimer(b,+b.dataset.sec));
+}
+function startTimer(btn,sec){btn.disabled=true;const old=btn.textContent;const t=setInterval(()=>{sec--;btn.textContent="⏱ "+Math.floor(sec/60).toString().padStart(2,"0")+":"+String(sec%60).padStart(2,"0");if(sec<=0){clearInterval(t);btn.textContent="⏰ Fertig!";btn.disabled=false}},1000)}
+document.getElementById("start").onclick=()=>document.querySelector(".panel:nth-of-type(2)").scrollIntoView({behavior:"smooth"});
+draw();
+});
+</script></body></html>

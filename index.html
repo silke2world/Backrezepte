@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mein Backbuch</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Mein Backbuch</h1><p>Rezepte · Backzeiten · Backmodus</p></header>
+<main>
+<section class="hero"><h2>Meine Rezepte</h2><input id="search" placeholder="Rezept suchen …"></section>
+<div id="recipes"></div>
+</main>
+<script>
+const recipes=[{file:"rezepte/pizza-4.json"}];
+const el=document.getElementById("recipes"), search=document.getElementById("search");
+async function load(){const data=await Promise.all(recipes.map(x=>fetch(x.file).then(r=>r.json())));
+function render(){const q=search.value.toLowerCase();el.innerHTML=data.filter(r=>r.title.toLowerCase().includes(q)).map(r=>`
+<article class="card"><div><span class="tag">${r.category}</span><h2>${r.title}</h2><p>${r.portions} Teiglinge · ${r.ingredients.reduce((s,x)=>s+x.amount,0).toLocaleString('de-DE')} g Zutaten</p>
+<a class="button" href="rezept.html?id=${r.id}">Rezept öffnen</a></div></article>`).join("")}
+render();search.oninput=render}
+load();
+</script></body></html>
