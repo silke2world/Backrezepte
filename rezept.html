@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="de">
 <head>
@@ -19,7 +18,7 @@
 <script>
 const id = new URLSearchParams(location.search).get("id") || "pizza-4";
 
-fetch("rezepte/" + id + ".json")
+fetch("rezepte/" + id + ".json?v=" + Date.now())
   .then(r => r.json())
   .then(r => {
 
@@ -152,4 +151,3 @@ fetch("rezepte/" + id + ".json")
 
 </body>
 </html>
-```
