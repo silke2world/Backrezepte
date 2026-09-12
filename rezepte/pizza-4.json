@@ -1,3 +1,4 @@
+```json
 {
   "id": "pizza-4",
   "title": "Pizza – 4 Teiglinge",
@@ -71,70 +72,63 @@
       "time": "10:00",
       "duration": "01:00",
       "title": "Vorteig",
-      "text": "Alle Zutaten für den Vorteig vermischen.",
-      "timer": 60
+      "text": "Alle Zutaten für den Vorteig vermischen, so dass keine Mehlnester mehr vorhanden sind. Eine Stunde abgedeckt stehen lassen. "
     },
     {
       "day": 1,
       "time": "11:00",
-      "duration": "00:00",
+      "duration": "00:20",
       "title": "Hauptteig",
-      "text": "Vorteig, Wasser und Mehl vermischen und 4 Minuten verkneten. Salz und Olivenöl dazugeben und zu Ende kneten (Fensterprobe). Danach 1 Stunde bei Raumtemperatur, anschließend über Nacht in den Kühlschrank."
+      "text": "Vorteig, Wasser und Mehl vermischen und ca. 4 Minuten verkneten. Salz und Olivenöl dazugeben und zu Ende kneten (Fensterprobe). Danach 1 Stunde bei Raumtemperatur, anschließend bis Tag 2 in den Kühlschrank."
     },
     {
       "day": 2,
       "time": "08:00",
-      "duration": "00:00",
+      "duration": "00:10",
       "title": "Pizzaballen formen",
-      "text": "4 Pizzaballen formen und in den Kühlschrank geben."
+      "text": "4 Pizzaballen formen, in geölte Dosen legen und in den Kühlschrank stellen."
     },
     {
       "day": 2,
       "time": "14:00",
       "duration": "04:00",
       "title": "Stückgare",
-      "text": "Teiglinge aus dem Kühlschrank nehmen und bei 23 °C reifen lassen.",
-      "timer": 240
+      "text": "4 h vor dem Pizza-Essen die Teiglinge aus dem Kühlschrank nehmen und bei 23 °C reifen lassen."
     },
     {
       "day": 2,
       "time": "17:40",
       "duration": "00:20",
-      "title": "Ofen vorheizen",
-      "text": "Ofen und Pizzastein auf 300 °C aufheizen.",
-      "timer": 20
+      "title": "Backofen vorheizen",
+      "text": "20 Minuten vor dem Einschießn den Ofen auf 300 °C Ober-Unterhitze aufheizen. Der Backstahl ist auf einer der oberen Schienen eingeschoben, so dass noch hinreichend Platz vorhanden ist, um gleich die Pizza einzuschießen."
     },
     {
       "day": 2,
       "time": "18:00",
-      "duration": "00:08",
+      "duration": "00:10",
       "title": "Pizza 1 backen",
-      "text": "Ausdehnen, belegen und backen. Die Pizza braucht etwa 5 Minuten im Ofen; danach den Stein kurz wieder aufheizen lassen.",
-      "timer": 8
+      "text": "Ausdehnen, belegen und backen. Die Pizza braucht etwa 5 Minuten im Ofen; danach den Stein kurz wieder aufheizen lassen."
     },
     {
       "day": 2,
       "time": "18:08",
       "duration": "00:08",
       "title": "Pizza 2 backen",
-      "text": "Ausdehnen, belegen und backen.",
-      "timer": 8
+      "text": "Ausdehnen, belegen und backen. Während die Pizza vorbereitet wird, heizt der Stein wieder auf."
     },
     {
       "day": 2,
       "time": "18:16",
       "duration": "00:08",
       "title": "Pizza 3 backen",
-      "text": "Ausdehnen, belegen und backen.",
-      "timer": 8
+      "text": "Ausdehnen, belegen und backen. Während die Pizza vorbereitet wird, heizt der Stein wieder auf."
     },
     {
       "day": 2,
       "time": "18:24",
       "duration": "00:08",
       "title": "Pizza 4 backen",
-      "text": "Ausdehnen, belegen und backen.",
-      "timer": 8
+      "text": "Ausdehnen, belegen und backen. Während die Pizza vorbereitet wird, heizt der Stein wieder auf."
     }
   ]
 }
