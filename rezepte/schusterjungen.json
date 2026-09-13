@@ -77,5 +77,17 @@
       "unit": "g"
     }
   ],
-  "steps": []
+  "steps": 
+  [
+    {
+      "day": 1,
+      "time": "22:00",
+      "duration": "00:10",
+      "title": "Sauerteig",
+      "text": "Alle Zutaten für den Sauerteig in einem Weckglas (1L oder mehr) vermischen, so dass keine Mehlnester mehr vorhanden sind. Höhe des Teigs mit einem Gummiband markieren."
+    }
+  ]
 }
+
+
+
