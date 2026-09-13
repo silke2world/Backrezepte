@@ -21,7 +21,7 @@
 const id =
   new URLSearchParams(location.search).get("id") || "pizza-4";
 
-fetch("rezepte/" + id + ".json?v=" + Date.now())
+fetch("rezepte/" + id + ".json")
   .then(r => {
     if (!r.ok) {
       throw new Error("Rezept konnte nicht geladen werden");
@@ -51,7 +51,10 @@ fetch("rezepte/" + id + ".json?v=" + Date.now())
             ? `
               <div class="recipe-images">
                 ${r.images.map(img => `
-                  <img src="images/${img}" alt="${r.title}">
+                  <img
+                    src="images/${img}"
+                    alt="${r.title}"
+                  >
                 `).join("")}
               </div>
             `
@@ -61,173 +64,126 @@ fetch("rezepte/" + id + ".json?v=" + Date.now())
       </section>
 
 
-      <section class="panel">
+      <section class="recipe-sections">
 
-        <h2>Zutaten</h2>
+        ${r.steps.map((step, i) => {
 
-        ${stages.map(s => `
+          const ingredients =
+            r.ingredients.filter(
+              x => x.stage === step.title
+            );
 
-          <h3>${s}</h3>
+          return `
 
-          <ul>
+            <section class="recipe-section">
 
-            ${r.ingredients
-              .filter(x => x.stage === s)
-              .map(x => `
-
-                <li>
-
-                  <b>${x.amount.toLocaleString('de-DE')}</b>
-
-                  ${x.unit} ${x.name}
-
-                </li>
-
-              `)
-              .join("")}
-
-          </ul>
-
-        `).join("")}
-
-      </section>
+              <h2>
+                ${step.title}
+                <span class="step-meta">
+                  · Tag ${step.day}
+                  · ${step.time}
+                  · ${step.duration}
+                </span>
+              </h2>
 
 
-      <section class="panel">
+              <div class="recipe-grid">
 
-        <div class="mode-head">
+                <div class="recipe-ingredients">
 
-          <h2>Backmodus</h2>
+                  ${
+                    ingredients.length
+                      ? `
+                        <ul>
+                          ${ingredients.map(x => `
+                            <li>
+                              <b>${x.amount.toLocaleString('de-DE')}</b>
+                              ${x.unit} ${x.name}
+                            </li>
+                          `).join("")}
+                        </ul>
+                      `
+                      : `
+                        <p class="step-info">
+                          ${step.title === "Teiglinge abstechen und Stückgare"
+                            ? "9 Teiglinge<br>2 h Stückgare"
+                            : ""}
+                        </p>
+                      `
+                  }
 
-          <button id="start">
-            Backmodus aktivieren
-          </button>
+                </div>
 
-        </div>
 
-        <div id="timeline"></div>
+                <div class="recipe-instructions">
+
+                  <p>${step.text}</p>
+
+                  ${
+                    step.duration !== "00:00"
+                      ? `
+                        <button
+                          class="timer"
+                          data-duration="${step.duration}">
+                          Timer ${step.duration} starten
+                        </button>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+            </section>
+
+          `;
+
+        }).join("")}
 
       </section>
 
     `;
 
 
-    const timeline =
-      document.getElementById("timeline");
+    document
+      .querySelectorAll(".timer")
+      .forEach(button => {
+
+        button.onclick = () =>
+          startTimer(
+            button,
+            button.dataset.duration
+          );
+
+      });
 
 
-    function draw() {
-
-      timeline.innerHTML = r.steps.map((s, i) => `
-
-        <div class="step ${
-          localStorage.getItem(r.id + "-" + i) === "1"
-            ? "done"
-            : ""
-        }">
-
-          <div class="time">
-
-            ${s.time}
-
-            <small>${s.duration}</small>
-
-          </div>
-
-
-          <div class="stepbody">
-
-            <h3>${s.title}</h3>
-
-            <p>${s.text}</p>
-
-
-            ${
-              s.duration !== "00:00"
-
-                ? `<button
-                     class="timer"
-                     data-duration="${s.duration}">
-                     Timer ${s.duration} starten
-                   </button>`
-
-                : ""
-            }
-
-
-            <button class="check" data-i="${i}">
-              ✓ Erledigt
-            </button>
-
-          </div>
-
-        </div>
-
-      `).join("");
-
-
-      timeline
-        .querySelectorAll(".check")
-        .forEach(b =>
-
-          b.onclick = () => {
-
-            const i = b.dataset.i;
-
-            localStorage.setItem(
-              r.id + "-" + i,
-              "1"
-            );
-
-            draw();
-
-          }
-
-        );
-
-
-      timeline
-        .querySelectorAll(".timer")
-        .forEach(b =>
-
-          b.onclick = () =>
-            startTimer(
-              b,
-              b.dataset.duration
-            )
-
-        );
-
-    }
-
-
-    function startTimer(btn, duration) {
+    function startTimer(button, duration) {
 
       const [hours, minutes] =
         duration.split(":").map(Number);
 
-      let sec =
+      let seconds =
         hours * 3600 +
         minutes * 60;
 
-      btn.disabled = true;
+      button.disabled = true;
 
+      const timer = setInterval(() => {
 
-      const t = setInterval(() => {
-
-        sec--;
+        seconds--;
 
         const h =
-          Math.floor(sec / 3600);
+          Math.floor(seconds / 3600);
 
         const m =
-          Math.floor((sec % 3600) / 60);
+          Math.floor((seconds % 3600) / 60);
 
         const s =
-          sec % 60;
+          seconds % 60;
 
-
-        btn.textContent =
+        button.textContent =
           "⏱ " +
           String(h).padStart(2, "0") +
           ":" +
@@ -236,31 +192,20 @@ fetch("rezepte/" + id + ".json?v=" + Date.now())
           String(s).padStart(2, "0");
 
 
-        if (sec <= 0) {
+        if (seconds <= 0) {
 
-          clearInterval(t);
+          clearInterval(timer);
 
-          btn.textContent = "⏰ Fertig!";
+          button.textContent =
+            "⏰ Fertig!";
 
-          btn.disabled = false;
+          button.disabled = false;
 
         }
 
       }, 1000);
 
     }
-
-
-    document.getElementById("start").onclick = () =>
-
-      document
-        .querySelector(".panel:nth-of-type(2)")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-
-    draw();
 
   })
 
