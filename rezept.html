@@ -1,730 +1,215 @@
-```html
+html
 <!doctype html>
 <html lang="de">
-
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rezept</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rezept</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <a href="index.html">← Mein Backbuch</a>
+  <a href="index.html">← Backrezepte</a>
 </header>
 
-<main id="app"></main>
+<main>
+
+  <section class="recipe-head">
+    <span id="category" class="tag"></span>
+    <h1 id="title">Rezept</h1>
+    <p id="portions"></p>
+
+    <div id="recipe-images" class="recipe-images"></div>
+  </section>
+
+  <section id="recipe-sections" class="recipe-sections"></section>
+
+</main>
+
 
 <script>
 
-const id =
-  new URLSearchParams(location.search).get("id") || "pizza-4";
+const params = new URLSearchParams(window.location.search);
+const recipeId = params.get("id");
+
+const recipeContainer = document.getElementById("recipe-sections");
+
+if (!recipeId) {
+  recipeContainer.innerHTML = "<p>Kein Rezept angegeben.</p>";
+} else {
+  loadRecipe();
+}
 
 
-fetch("rezepte/" + id + ".json")
-  .then(r => {
+async function loadRecipe() {
 
-    if (!r.ok) {
-      throw new Error("Rezept konnte nicht geladen werden");
+  try {
+
+    console.log("Lade Rezept:", recipeId);
+
+    const response = await fetch("rezepte/" + recipeId + ".json");
+
+    if (!response.ok) {
+      throw new Error("Rezept konnte nicht geladen werden.");
     }
 
-    return r.json();
+    const recipe = await response.json();
 
-  })
-  .then(r => {
+    document.title = recipe.title + " – Backrezepte";
 
-    document.title = r.title;
+    document.getElementById("title").textContent = recipe.title;
 
+    document.getElementById("category").textContent =
+      recipe.category || "";
 
-    /* --------------------------------------------------
-       REZEPTKOPF
-    -------------------------------------------------- */
-
-    const images = r.images && r.images.length
-      ? `
-        <div class="recipe-images">
-          ${r.images.map(img => `
-            <img src="images/${img}" alt="${r.title}">
-          `).join("")}
-        </div>
-      `
-      : "";
+    if (recipe.portions) {
+      document.getElementById("portions").textContent =
+        recipe.portions + " Stück";
+    }
 
 
-    document.getElementById("app").innerHTML = `
+    /*
+     * FOTOS
+     */
 
-      <section class="recipe-head">
+    const imageContainer =
+      document.getElementById("recipe-images");
 
-        <span class="tag">${r.category}</span>
+    if (recipe.images && recipe.images.length > 0) {
 
-        <h1>${r.title}</h1>
+      recipe.images.forEach(image => {
 
-        <p>${r.portions} Teiglinge</p>
+        const img = document.createElement("img");
 
-        ${images}
+        img.src = "images/" + image;
+        img.alt = recipe.title;
 
-      </section>
+        imageContainer.appendChild(img);
 
+      });
 
-      <section class="recipe-sections" id="recipe-sections"></section>
-
-    `;
-
-
-    const container =
-      document.getElementById("recipe-sections");
-
-
-    /* --------------------------------------------------
-       ABSCHNITTE
-    -------------------------------------------------- */
-
-    r.steps.forEach((step, stepIndex) => {
-
-      /*
-       * Zutaten werden über "stage" zugeordnet.
-       *
-       * Bei deinen Schusterjungen heißt der Schritt
-       * z.B. "Haupteig kneten + 2 h Stockgare",
-       * während die Zutaten den stage "Hauptteig" haben.
-       *
-       * Deshalb suchen wir zuerst nach einem passenden
-       * stage-Namen.
-       */
-
-      let stage = "";
-
-      if (step.title.toLowerCase().includes("sauerteig")) {
-        stage = "Sauerteig";
-      }
-
-      else if (
-        step.title.toLowerCase().includes("haupt")
-      ) {
-        stage = "Hauptteig";
-      }
+    }
 
 
-      const ingredients = r.ingredients.filter(
-        x => x.stage === stage
-      );
+    /*
+     * REZEPTABSCHNITTE
+     */
 
+    recipeContainer.innerHTML = "";
+
+    recipe.steps.forEach((step, index) => {
 
       const section =
         document.createElement("section");
 
-      section.className =
-        "recipe-section";
+      section.className = "recipe-section";
 
-
-      section.innerHTML = `
-
-        <h2>
-          ${step.title}
-          <span class="step-meta">
-            · Tag ${step.day}
-            · ${step.time}
-            · ${step.duration}
-          </span>
-        </h2>
-
-
-        <div class="recipe-grid">
-
-          <div class="recipe-left">
-
-            ${
-              ingredients.length
-                ? ingredients.map((x, ingredientIndex) => {
-
-                    const key =
-                      `${r.id}-step${stepIndex}-ingredient${ingredientIndex}`;
-
-                    const checked =
-                      localStorage.getItem(key) === "1";
-
-                    return `
-
-                      <label class="ingredient-check">
-
-                        <input
-                          type="checkbox"
-                          data-key="${key}"
-                          ${checked ? "checked" : ""}
-                        >
-
-                        <span>
-                          <b>
-                            ${x.amount.toLocaleString('de-DE')}
-                          </b>
-                          ${x.unit}
-                          ${x.name}
-                        </span>
-
-                      </label>
-
-                    `;
-
-                  }).join("")
-
-                : `
-
-                  <label class="ingredient-check">
-
-                    <input
-                      type="checkbox"
-                      data-key="${r.id}-step${stepIndex}"
-                    >
-
-                    <span>
-                      ${
-                        step.title
-                          .toLowerCase()
-                          .includes("teiglinge")
-                          ? "9 Teiglinge · 2 h Stückgare"
-                          : step.title
-                      }
-                    </span>
-
-                  </label>
-
-                `
-            }
-
-          </div>
-
-
-          <div class="recipe-right">
-
-            <p>${step.text}</p>
-
-            ${
-              step.duration !== "00:00"
-                ? `
-                  <button
-                    class="timer"
-                    data-duration="${step.duration}">
-                    Timer ${step.duration} starten
-                  </button>
-                `
-                : ""
-            }
-
-          </div>
-
-        </div>
-
-      `;
-
-
-      container.appendChild(section);
-
-    });
-
-
-    /* --------------------------------------------------
-       CHECKBOXEN SPEICHERN
-    -------------------------------------------------- */
-
-    document
-      .querySelectorAll(".ingredient-check input")
-      .forEach(checkbox => {
-
-        checkbox.addEventListener("change", () => {
-
-          if (checkbox.checked) {
-
-            localStorage.setItem(
-              checkbox.dataset.key,
-              "1"
-            );
-
-          } else {
-
-            localStorage.removeItem(
-              checkbox.dataset.key
-            );
-
-          }
-
-        });
-
-      });
-
-
-    /* --------------------------------------------------
-       TIMER
-    -------------------------------------------------- */
-
-    document
-      .querySelectorAll(".timer")
-      .forEach(button => {
-
-        button.onclick = () =>
-          startTimer(
-            button,
-            button.dataset.duration
-          );
-
-      });
-
-
-    function startTimer(button, duration) {
-
-      const [hours, minutes] =
-        duration.split(":").map(Number);
-
-      let seconds =
-        hours * 3600 +
-        minutes * 60;
-
-      button.disabled = true;
-
-
-      const timer =
-        setInterval(() => {
-
-          seconds--;
-
-
-          const h =
-            Math.floor(seconds / 3600);
-
-          const m =
-            Math.floor(
-              (seconds % 3600) / 60
-            );
-
-          const s =
-            seconds % 60;
-
-
-          button.textContent =
-            "⏱ " +
-            String(h).padStart(2, "0") +
-            ":" +
-            String(m).padStart(2, "0") +
-            ":" +
-            String(s).padStart(2, "0");
-
-
-          if (seconds <= 0) {
-
-            clearInterval(timer);
-
-            button.textContent =
-              "⏰ Fertig!";
-
-            button.disabled = false;
-
-          }
-
-        }, 1000);
-
-    }
-
-  })
-
-
-  /* --------------------------------------------------
-     FEHLER
-  -------------------------------------------------- */
-
-  .catch(error => {
-
-    console.error(error);
-
-    document.getElementById("app").innerHTML = `
-
-      <section class="panel">
-
-        <h2>Rezept nicht gefunden</h2>
-
-        <p>
-          Das Rezept konnte nicht geladen werden.
-        </p>
-
-        <p>
-          <a href="index.html">
-            Zurück zum Backbuch
-          </a>
-        </p>
-
-      </section>
-
-    `;
-
-  });
-
-</script>
-
-</body>
-
-</html>
-```
-<!doctype html>
-<html lang="de">
-
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rezept</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-  <a href="index.html">← Mein Backbuch</a>
-</header>
-
-<main id="app"></main>
-
-<script>
-
-const id =
-  new URLSearchParams(location.search).get("id") || "pizza-4";
-
-
-fetch("rezepte/" + id + ".json")
-  .then(r => {
-
-    if (!r.ok) {
-      throw new Error("Rezept konnte nicht geladen werden");
-    }
-
-    return r.json();
-
-  })
-  .then(r => {
-
-    document.title = r.title;
-
-
-    /* --------------------------------------------------
-       REZEPTKOPF
-    -------------------------------------------------- */
-
-    const images = r.images && r.images.length
-      ? `
-        <div class="recipe-images">
-          ${r.images.map(img => `
-            <img src="images/${img}" alt="${r.title}">
-          `).join("")}
-        </div>
-      `
-      : "";
-
-
-    document.getElementById("app").innerHTML = `
-
-      <section class="recipe-head">
-
-        <span class="tag">${r.category}</span>
-
-        <h1>${r.title}</h1>
-
-        <p>${r.portions} Teiglinge</p>
-
-        ${images}
-
-      </section>
-
-
-      <section class="recipe-sections" id="recipe-sections"></section>
-
-    `;
-
-
-    const container =
-      document.getElementById("recipe-sections");
-
-
-    /* --------------------------------------------------
-       ABSCHNITTE
-    -------------------------------------------------- */
-
-    r.steps.forEach((step, stepIndex) => {
 
       /*
-       * Zutaten werden über "stage" zugeordnet.
-       *
-       * Bei deinen Schusterjungen heißt der Schritt
-       * z.B. "Haupteig kneten + 2 h Stockgare",
-       * während die Zutaten den stage "Hauptteig" haben.
-       *
-       * Deshalb suchen wir zuerst nach einem passenden
-       * stage-Namen.
+       * ÜBERSCHRIFT
        */
 
-      let stage = "";
+      const heading =
+        document.createElement("h2");
 
-      if (step.title.toLowerCase().includes("sauerteig")) {
-        stage = "Sauerteig";
+      const title =
+        document.createElement("span");
+
+      title.textContent = step.title;
+
+      heading.appendChild(title);
+
+
+      /*
+       * Zeitinformationen
+       */
+
+      const meta =
+        document.createElement("span");
+
+      meta.className = "step-meta";
+
+      let metaText = "";
+
+      if (step.day) {
+        metaText += " · Tag " + step.day;
       }
 
-      else if (
-        step.title.toLowerCase().includes("haupt")
-      ) {
-        stage = "Hauptteig";
+      if (step.time) {
+        metaText += " · " + step.time;
       }
 
+      if (step.duration) {
+        metaText += " · " + formatDuration(step.duration);
+      }
 
-      const ingredients = r.ingredients.filter(
-        x => x.stage === stage
-      );
+      meta.textContent = metaText;
 
+      heading.appendChild(meta);
 
-      const section =
-        document.createElement("section");
-
-      section.className =
-        "recipe-section";
+      section.appendChild(heading);
 
 
-      section.innerHTML = `
+      /*
+       * ZWEI SPALTEN
+       */
 
-        <h2>
-          ${step.title}
-          <span class="step-meta">
-            · Tag ${step.day}
-            · ${step.time}
-            · ${step.duration}
-          </span>
-        </h2>
+      const grid =
+        document.createElement("div");
+
+      grid.className = "recipe-grid";
 
 
-        <div class="recipe-grid">
+      /*
+       * LINKE SPALTE
+       */
 
-          <div class="recipe-left">
+      const left =
+        document.createElement("div");
 
-            ${
-              ingredients.length
-                ? ingredients.map((x, ingredientIndex) => {
-
-                    const key =
-                      `${r.id}-step${stepIndex}-ingredient${ingredientIndex}`;
-
-                    const checked =
-                      localStorage.getItem(key) === "1";
-
-                    return `
-
-                      <label class="ingredient-check">
-
-                        <input
-                          type="checkbox"
-                          data-key="${key}"
-                          ${checked ? "checked" : ""}
-                        >
-
-                        <span>
-                          <b>
-                            ${x.amount.toLocaleString('de-DE')}
-                          </b>
-                          ${x.unit}
-                          ${x.name}
-                        </span>
-
-                      </label>
-
-                    `;
-
-                  }).join("")
-
-                : `
-
-                  <label class="ingredient-check">
-
-                    <input
-                      type="checkbox"
-                      data-key="${r.id}-step${stepIndex}"
-                    >
-
-                    <span>
-                      ${
-                        step.title
-                          .toLowerCase()
-                          .includes("teiglinge")
-                          ? "9 Teiglinge · 2 h Stückgare"
-                          : step.title
-                      }
-                    </span>
-
-                  </label>
-
-                `
-            }
-
-          </div>
+      left.className = "recipe-left";
 
 
-          <div class="recipe-right">
+      /*
+       * Bei einem stage kommen automatisch
+       * die passenden Zutaten aus ingredients.
+       */
 
-            <p>${step.text}</p>
+      if (step.stage) {
 
-            ${
-              step.duration !== "00:00"
-                ? `
-                  <button
-                    class="timer"
-                    data-duration="${step.duration}">
-                    Timer ${step.duration} starten
-                  </button>
-                `
-                : ""
-            }
-
-          </div>
-
-        </div>
-
-      `;
-
-
-      container.appendChild(section);
-
-    });
-
-
-    /* --------------------------------------------------
-       CHECKBOXEN SPEICHERN
-    -------------------------------------------------- */
-
-    document
-      .querySelectorAll(".ingredient-check input")
-      .forEach(checkbox => {
-
-        checkbox.addEventListener("change", () => {
-
-          if (checkbox.checked) {
-
-            localStorage.setItem(
-              checkbox.dataset.key,
-              "1"
-            );
-
-          } else {
-
-            localStorage.removeItem(
-              checkbox.dataset.key
-            );
-
-          }
-
-        });
-
-      });
-
-
-    /* --------------------------------------------------
-       TIMER
-    -------------------------------------------------- */
-
-    document
-      .querySelectorAll(".timer")
-      .forEach(button => {
-
-        button.onclick = () =>
-          startTimer(
-            button,
-            button.dataset.duration
+        const ingredients =
+          recipe.ingredients.filter(
+            ingredient =>
+              ingredient.stage === step.stage
           );
 
-      });
+        ingredients.forEach((ingredient, ingredientIndex) => {
+
+          const label =
+            document.createElement("label");
+
+          label.className = "ingredient-check";
 
 
-    function startTimer(button, duration) {
+          const checkbox =
+            document.createElement("input");
 
-      const [hours, minutes] =
-        duration.split(":").map(Number);
-
-      let seconds =
-        hours * 3600 +
-        minutes * 60;
-
-      button.disabled = true;
+          checkbox.type = "checkbox";
 
 
-      const timer =
-        setInterval(() => {
+          const key =
+            recipe.id +
+            "_step_" +
+            index +
+            "_ingredient_" +
+            ingredientIndex;
 
-          seconds--;
-
-
-          const h =
-            Math.floor(seconds / 3600);
-
-          const m =
-            Math.floor(
-              (seconds % 3600) / 60
-            );
-
-          const s =
-            seconds % 60;
+          checkbox.checked =
+            localStorage.getItem(key) === "true";
 
 
-          button.textContent =
-            "⏱ " +
-            String(h).padStart(2, "0") +
-            ":" +
-            String(m).padStart(2, "0") +
-            ":" +
-            String(s).padStart(2, "0");
-
-
-          if (seconds <= 0) {
-
-            clearInterval(timer);
-
-            button.textContent =
-              "⏰ Fertig!";
-
-            button.disabled = false;
-
-          }
-
-        }, 1000);
-
-    }
-
-  })
-
-
-  /* --------------------------------------------------
-     FEHLER
-  -------------------------------------------------- */
-
-  .catch(error => {
-
-    console.error(error);
-
-    document.getElementById("app").innerHTML = `
-
-      <section class="panel">
-
-        <h2>Rezept nicht gefunden</h2>
-
-        <p>
-          Das Rezept konnte nicht geladen werden.
-        </p>
-
-        <p>
-          <a href="index.html">
-            Zurück zum Backbuch
-          </a>
-        </p>
-
-      </section>
-
-    `;
-
-  });
-
-</script>
-
-</body>
-
-</html>
+          checkbox.addEventListener("change", () => {
