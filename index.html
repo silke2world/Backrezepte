@@ -34,7 +34,6 @@
 
 </main>
 
-
 <script>
 
 const el = document.getElementById("recipes");
@@ -49,11 +48,12 @@ async function load() {
 
     console.log("1. Lade rezepte.json");
 
-    const response = await fetch(
-      "rezepte.json?v=" + Date.now()
-    );
+    const response = await fetch("rezepte.json");
 
-    console.log("rezepte.json Status:", response.status);
+    console.log(
+      "rezepte.json Status:",
+      response.status
+    );
 
     if (!response.ok) {
       throw new Error(
@@ -63,17 +63,23 @@ async function load() {
 
     const index = await response.json();
 
-    console.log("2. Rezeptliste:", index);
+    console.log(
+      "2. Rezeptliste:",
+      index
+    );
 
 
     data = await Promise.all(
 
       index.recipes.map(async file => {
 
-        console.log("3. Lade:", file);
+        console.log(
+          "3. Lade:",
+          file
+        );
 
         const response = await fetch(
-          "rezepte/" + file + "?v=" + Date.now()
+          "rezepte/" + file
         );
 
         console.log(
@@ -88,7 +94,8 @@ async function load() {
           );
         }
 
-        const recipe = await response.json();
+        const recipe =
+          await response.json();
 
         console.log(
           "4. Rezept geladen:",
@@ -122,7 +129,9 @@ async function load() {
 
         <h2>Fehler beim Laden</h2>
 
-        <p>${error.message}</p>
+        <p>
+          ${error.message}
+        </p>
 
         <p>
           Details stehen in der Browser-Konsole.
@@ -192,4 +201,5 @@ load();
 </script>
 
 </body>
+
 </html>
