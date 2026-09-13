@@ -1,7 +1,7 @@
 {
   "id": "schusterjungen",
   "title": "Schusterjungen Roggenmisch",
-  "category": "Brötchen",
+  "category": "Broetchen",
   "portions": 9,
   "ingredients": [
     {
@@ -19,10 +19,10 @@
     {
       "stage": "Sauerteig",
       "name": "Roggenvollkorn",
-      "amount": 320,
+      "amount": 140,
       "unit": "g"
-    }    
-	{
+    },    
+	  {
       "stage": "Hauptteig",
       "name": "Sauerteig",
       "amount": 320,
