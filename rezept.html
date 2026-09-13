@@ -15,7 +15,7 @@
 
 <main id="app"></main>
 
-<script>
+<script> 
 const id = new URLSearchParams(location.search).get("id") || "pizza-4";
 
 fetch("rezepte/" + id + ".json?v=" + Date.now())
@@ -150,4 +150,5 @@ fetch("rezepte/" + id + ".json?v=" + Date.now())
 </script>
 
 </body>
+  
 </html>
