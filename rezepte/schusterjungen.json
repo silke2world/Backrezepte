@@ -109,11 +109,8 @@
       "duration": "02:15",
       "title": "Teiglinge abstechen und 2 h Stückgare",
       "checklist": [
-        "Arbeitsfläche bemehlen",
-        "Teig auf die Arbeitsfläche gleiten lassen",
         "9 Stücke mit der Teigkarte abteilen",
         "Teiglinge etwas in Form drücken",
-        "auf Backpapier legen und abdecken",
         "2 h Stückgare"
       ],
       "text": "Arbeitsfläche bemehlen, die Teigschüssel auf den Kopf drehen und den Teig auf das Mehl gleiten lassen. 9 möglichst gleichgroße Stücke mit der Teigkarte abteilen. Die etwas in Form gedrückten Stücke auf Backpapier legen und abdecken. 2 h Stückgare."
@@ -125,12 +122,11 @@
       "duration": "00:20",
       "title": "Backofen vorheizen",
       "checklist": [
-        "Backofen auf 250 °C Ober-/Unterhitze einstellen",
-        "Lavasteine in einer Schüssel auf den Boden stellen",
-        "Backstahl auf eine der oberen Schienen einschieben",
+        "250 °C Ober-/Unterhitze einstellen",
+        "Lavasteine für den Dampf",
         "20 Minuten vorheizen"
       ],
-      "text": "Backofen auf 250 °C Ober-/Unterhitze vorheizen. Lavasteine in einer Schüssel auf dem Boden mit aufheizen. Den Backstahl auf eine der oberen Schienen einschieben. 20 Minuten vorheizen."
+      "text": "Backofen auf 250 °C Ober-/Unterhitze vorheizen. Lavasteine in einer Schüssel auf dem Boden mit aufheizen. Den Backstahl auf der mittleren Schiene einschieben. Mindestens 20 Minuten vorheizen."
     },
 
     {
@@ -139,10 +135,8 @@
       "duration": "00:20",
       "title": "Backen",
       "checklist": [
-        "Schusterjungen mit Backpapier auf den aufgeheizten Stahl schieben",
-        "Wasserdampf geben",
-        "Nach 5 Minuten Wasserdampf ablassen",
-        "15 Minuten Backzeit (+ Zugabe falls nötig)",
+       "Nach 5 Minuten Wasserdampf ablassen",
+        "ca. 15 Minuten Backzeit (+ Zugabe falls nötig)",
         "Auf einem Drahtgitter auskühlen lassen"
       ],
       "text": "Die Schusterjungen bemehlen und mit dem Backpapier auf den aufgeheizten Stahl schieben. Wasserdampf geben. Nach 5 Minuten Wasserdampf ablassen. Nach ungefähr 15 Minuten sind die Brötchen fertig. Falls nötig, noch einige Minuten weiterbacken. Auf einem Drahtgitter auskühlen lassen."
