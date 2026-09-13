@@ -1,9 +1,13 @@
 {
   "id": "pizza-4",
-  "title": "Pizza – 4 Teiglinge",
+  "title": "Pizza 32-h-Teig (plus/minus)",
   "category": "Pizza",
   "portions": 4,
 
+  "images": [
+    "pizza_1.jpeg"
+  ],
+  
   "ingredients": [
     {
       "stage": "Vorteig",
@@ -83,7 +87,7 @@
       "duration": "00:20",
       "title": "Hauptteig",
       "stage": "Hauptteig",
-      "text": "Vorteig, Wasser und Mehl vermischen und ca. 4 Minuten verkneten. Salz und Olivenöl dazugeben und zu Ende kneten (Fensterprobe). Danach 1 Stunde bei Raumtemperatur, anschließend bis Tag 2 in den Kühlschrank."
+      "text": "Vorteig, Wasser und Mehl vermischen und ca. 4 Minuten verkneten. Salz dazugeben und zu Ende kneten (Fensterprobe). Dose einölen und Teig hineinlegen. Danach 1 Stunde bei Raumtemperatur, anschließend bis Tag 2 in den Kühlschrank."
     },
 
     {
@@ -133,13 +137,13 @@
         "Teig ausdehnen",
         "Pizza belegen",
         "Pizza backen",
-        "Stein kurz wieder aufheizen lassen",
+        "Stahl kurz wieder aufheizen lassen",
         "Pizza 1",
         "Pizza 2",
         "Pizza 3",
         "Pizza 4"
       ],
-      "text": "Ausdehnen, belegen und backen. Jede Pizza braucht etwa 5 Minuten im Ofen; danach den Stein kurz wieder aufheizen lassen."
+      "text": "Ausdehnen, belegen und backen. Jede Pizza braucht etwa 5 Minuten im Ofen; danach den Stahl kurz wieder aufheizen lassen."
     }
   ]
 }

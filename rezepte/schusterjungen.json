@@ -1,11 +1,12 @@
 {
   "id": "schusterjungen",
   "title": "Schusterjungen",
-  "category": "Broetchen",
+  "category": "Brötchen",
   "portions": 9,
 
   "images": [
-    "schusterjungen_01_m.jpeg"
+    "schusterjungen_1.jpeg",
+    "schusterjungen_2.jpeg"
   ],
 
   "ingredients": [
