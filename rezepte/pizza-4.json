@@ -41,6 +41,12 @@
     },
     {
       "stage": "Hauptteig",
+      "name": "Vorteig",
+      "amount": 482,
+      "unit": "g"
+    },
+    {
+      "stage": "Hauptteig",
       "name": "Wasser",
       "amount": 131.5,
       "unit": "g"
