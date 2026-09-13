@@ -16,7 +16,10 @@
 <main id="app"></main>
 
 <script> 
-const id = new URLSearchParams(location.search).get("id") || "pizza-4";
+const recipes=[
+  {file:"rezepte/pizza-4.json"},
+  {file:"rezepte/schusterjungen.json"}
+];
 
 fetch("rezepte/" + id + ".json?v=" + Date.now())
   .then(r => r.json())
