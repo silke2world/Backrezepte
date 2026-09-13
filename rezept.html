@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="de">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,143 +16,270 @@
 
 <main id="app"></main>
 
-<script> 
-const recipes=[
-  {file:"rezepte/pizza-4.json"},
-  {file:"rezepte/schusterjungen.json"}
-];
+<script>
+
+const id =
+  new URLSearchParams(location.search).get("id") || "pizza-4";
 
 fetch("rezepte/" + id + ".json?v=" + Date.now())
-  .then(r => r.json())
+  .then(r => {
+    if (!r.ok) {
+      throw new Error("Rezept konnte nicht geladen werden");
+    }
+    return r.json();
+  })
   .then(r => {
 
     document.title = r.title;
 
-    const stages = [...new Set(r.ingredients.map(x => x.stage))];
+    const stages = [
+      ...new Set(r.ingredients.map(x => x.stage))
+    ];
 
     document.getElementById("app").innerHTML = `
+
       <section class="recipe-head">
+
         <span class="tag">${r.category}</span>
+
         <h1>${r.title}</h1>
+
         <p>${r.portions} Teiglinge</p>
+
       </section>
 
+
       <section class="panel">
+
         <h2>Zutaten</h2>
+
         ${stages.map(s => `
+
           <h3>${s}</h3>
+
           <ul>
+
             ${r.ingredients
               .filter(x => x.stage === s)
               .map(x => `
+
                 <li>
+
                   <b>${x.amount.toLocaleString('de-DE')}</b>
+
                   ${x.unit} ${x.name}
+
                 </li>
+
               `)
               .join("")}
+
           </ul>
+
         `).join("")}
+
       </section>
 
+
       <section class="panel">
+
         <div class="mode-head">
+
           <h2>Backmodus</h2>
-          <button id="start">Backmodus aktivieren</button>
+
+          <button id="start">
+            Backmodus aktivieren
+          </button>
+
         </div>
 
         <div id="timeline"></div>
+
       </section>
+
     `;
 
-    const timeline = document.getElementById("timeline");
+
+    const timeline =
+      document.getElementById("timeline");
+
 
     function draw() {
 
       timeline.innerHTML = r.steps.map((s, i) => `
+
         <div class="step ${
-          localStorage.getItem(r.id + "-" + i) === "1" ? "done" : ""
+          localStorage.getItem(r.id + "-" + i) === "1"
+            ? "done"
+            : ""
         }">
 
           <div class="time">
+
             ${s.time}
+
             <small>${s.duration}</small>
+
           </div>
 
+
           <div class="stepbody">
+
             <h3>${s.title}</h3>
+
             <p>${s.text}</p>
+
 
             ${
               s.duration !== "00:00"
-                ? `<button class="timer"
-                    data-duration="${s.duration}">
-                    Timer ${s.duration} starten
+
+                ? `<button
+                     class="timer"
+                     data-duration="${s.duration}">
+                     Timer ${s.duration} starten
                    </button>`
+
                 : ""
             }
+
 
             <button class="check" data-i="${i}">
               ✓ Erledigt
             </button>
+
           </div>
 
         </div>
+
       `).join("");
 
-      timeline.querySelectorAll(".check").forEach(b =>
-        b.onclick = () => {
-          const i = b.dataset.i;
-          localStorage.setItem(r.id + "-" + i, "1");
-          draw();
-        }
-      );
 
-      timeline.querySelectorAll(".timer").forEach(b =>
-        b.onclick = () => startTimer(b, b.dataset.duration)
-      );
+      timeline
+        .querySelectorAll(".check")
+        .forEach(b =>
+
+          b.onclick = () => {
+
+            const i = b.dataset.i;
+
+            localStorage.setItem(
+              r.id + "-" + i,
+              "1"
+            );
+
+            draw();
+
+          }
+
+        );
+
+
+      timeline
+        .querySelectorAll(".timer")
+        .forEach(b =>
+
+          b.onclick = () =>
+            startTimer(
+              b,
+              b.dataset.duration
+            )
+
+        );
+
     }
+
 
     function startTimer(btn, duration) {
 
-      const [hours, minutes] = duration.split(":").map(Number);
+      const [hours, minutes] =
+        duration.split(":").map(Number);
 
-      let sec = hours * 3600 + minutes * 60;
+      let sec =
+        hours * 3600 +
+        minutes * 60;
 
       btn.disabled = true;
+
 
       const t = setInterval(() => {
 
         sec--;
 
-        const h = Math.floor(sec / 3600);
-        const m = Math.floor((sec % 3600) / 60);
-        const s = sec % 60;
+        const h =
+          Math.floor(sec / 3600);
+
+        const m =
+          Math.floor((sec % 3600) / 60);
+
+        const s =
+          sec % 60;
+
 
         btn.textContent =
           "⏱ " +
-          String(h).padStart(2, "0") + ":" +
-          String(m).padStart(2, "0") + ":" +
+          String(h).padStart(2, "0") +
+          ":" +
+          String(m).padStart(2, "0") +
+          ":" +
           String(s).padStart(2, "0");
 
+
         if (sec <= 0) {
+
           clearInterval(t);
+
           btn.textContent = "⏰ Fertig!";
+
           btn.disabled = false;
+
         }
 
       }, 1000);
+
     }
 
+
     document.getElementById("start").onclick = () =>
+
       document
         .querySelector(".panel:nth-of-type(2)")
-        .scrollIntoView({ behavior: "smooth" });
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
 
     draw();
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    document.getElementById("app").innerHTML = `
+
+      <section class="panel">
+
+        <h2>Rezept nicht gefunden</h2>
+
+        <p>
+          Das Rezept konnte nicht geladen werden.
+        </p>
+
+        <p>
+          <a href="index.html">
+            Zurück zum Backbuch
+          </a>
+        </p>
+
+      </section>
+
+    `;
+
   });
+
 </script>
 
 </body>
-  
+
 </html>
