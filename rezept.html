@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="de">
 
@@ -21,20 +22,36 @@
 const id =
   new URLSearchParams(location.search).get("id") || "pizza-4";
 
+
 fetch("rezepte/" + id + ".json")
   .then(r => {
+
     if (!r.ok) {
       throw new Error("Rezept konnte nicht geladen werden");
     }
+
     return r.json();
+
   })
   .then(r => {
 
     document.title = r.title;
 
-    const stages = [
-      ...new Set(r.ingredients.map(x => x.stage))
-    ];
+
+    /* --------------------------------------------------
+       REZEPTKOPF
+    -------------------------------------------------- */
+
+    const images = r.images && r.images.length
+      ? `
+        <div class="recipe-images">
+          ${r.images.map(img => `
+            <img src="images/${img}" alt="${r.title}">
+          `).join("")}
+        </div>
+      `
+      : "";
+
 
     document.getElementById("app").innerHTML = `
 
@@ -46,105 +63,200 @@ fetch("rezepte/" + id + ".json")
 
         <p>${r.portions} Teiglinge</p>
 
-        ${
-          r.images && r.images.length
-            ? `
-              <div class="recipe-images">
-                ${r.images.map(img => `
-                  <img
-                    src="images/${img}"
-                    alt="${r.title}"
-                  >
-                `).join("")}
-              </div>
-            `
-            : ""
-        }
+        ${images}
 
       </section>
 
 
-      <section class="recipe-sections">
-
-        ${r.steps.map((step, i) => {
-
-          const ingredients =
-            r.ingredients.filter(
-              x => x.stage === step.title
-            );
-
-          return `
-
-            <section class="recipe-section">
-
-              <h2>
-                ${step.title}
-                <span class="step-meta">
-                  · Tag ${step.day}
-                  · ${step.time}
-                  · ${step.duration}
-                </span>
-              </h2>
-
-
-              <div class="recipe-grid">
-
-                <div class="recipe-ingredients">
-
-                  ${
-                    ingredients.length
-                      ? `
-                        <ul>
-                          ${ingredients.map(x => `
-                            <li>
-                              <b>${x.amount.toLocaleString('de-DE')}</b>
-                              ${x.unit} ${x.name}
-                            </li>
-                          `).join("")}
-                        </ul>
-                      `
-                      : `
-                        <p class="step-info">
-                          ${step.title === "Teiglinge abstechen und Stückgare"
-                            ? "9 Teiglinge<br>2 h Stückgare"
-                            : ""}
-                        </p>
-                      `
-                  }
-
-                </div>
-
-
-                <div class="recipe-instructions">
-
-                  <p>${step.text}</p>
-
-                  ${
-                    step.duration !== "00:00"
-                      ? `
-                        <button
-                          class="timer"
-                          data-duration="${step.duration}">
-                          Timer ${step.duration} starten
-                        </button>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              </div>
-
-            </section>
-
-          `;
-
-        }).join("")}
-
-      </section>
+      <section class="recipe-sections" id="recipe-sections"></section>
 
     `;
 
+
+    const container =
+      document.getElementById("recipe-sections");
+
+
+    /* --------------------------------------------------
+       ABSCHNITTE
+    -------------------------------------------------- */
+
+    r.steps.forEach((step, stepIndex) => {
+
+      /*
+       * Zutaten werden über "stage" zugeordnet.
+       *
+       * Bei deinen Schusterjungen heißt der Schritt
+       * z.B. "Haupteig kneten + 2 h Stockgare",
+       * während die Zutaten den stage "Hauptteig" haben.
+       *
+       * Deshalb suchen wir zuerst nach einem passenden
+       * stage-Namen.
+       */
+
+      let stage = "";
+
+      if (step.title.toLowerCase().includes("sauerteig")) {
+        stage = "Sauerteig";
+      }
+
+      else if (
+        step.title.toLowerCase().includes("haupt")
+      ) {
+        stage = "Hauptteig";
+      }
+
+
+      const ingredients = r.ingredients.filter(
+        x => x.stage === stage
+      );
+
+
+      const section =
+        document.createElement("section");
+
+      section.className =
+        "recipe-section";
+
+
+      section.innerHTML = `
+
+        <h2>
+          ${step.title}
+          <span class="step-meta">
+            · Tag ${step.day}
+            · ${step.time}
+            · ${step.duration}
+          </span>
+        </h2>
+
+
+        <div class="recipe-grid">
+
+          <div class="recipe-left">
+
+            ${
+              ingredients.length
+                ? ingredients.map((x, ingredientIndex) => {
+
+                    const key =
+                      `${r.id}-step${stepIndex}-ingredient${ingredientIndex}`;
+
+                    const checked =
+                      localStorage.getItem(key) === "1";
+
+                    return `
+
+                      <label class="ingredient-check">
+
+                        <input
+                          type="checkbox"
+                          data-key="${key}"
+                          ${checked ? "checked" : ""}
+                        >
+
+                        <span>
+                          <b>
+                            ${x.amount.toLocaleString('de-DE')}
+                          </b>
+                          ${x.unit}
+                          ${x.name}
+                        </span>
+
+                      </label>
+
+                    `;
+
+                  }).join("")
+
+                : `
+
+                  <label class="ingredient-check">
+
+                    <input
+                      type="checkbox"
+                      data-key="${r.id}-step${stepIndex}"
+                    >
+
+                    <span>
+                      ${
+                        step.title
+                          .toLowerCase()
+                          .includes("teiglinge")
+                          ? "9 Teiglinge · 2 h Stückgare"
+                          : step.title
+                      }
+                    </span>
+
+                  </label>
+
+                `
+            }
+
+          </div>
+
+
+          <div class="recipe-right">
+
+            <p>${step.text}</p>
+
+            ${
+              step.duration !== "00:00"
+                ? `
+                  <button
+                    class="timer"
+                    data-duration="${step.duration}">
+                    Timer ${step.duration} starten
+                  </button>
+                `
+                : ""
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(section);
+
+    });
+
+
+    /* --------------------------------------------------
+       CHECKBOXEN SPEICHERN
+    -------------------------------------------------- */
+
+    document
+      .querySelectorAll(".ingredient-check input")
+      .forEach(checkbox => {
+
+        checkbox.addEventListener("change", () => {
+
+          if (checkbox.checked) {
+
+            localStorage.setItem(
+              checkbox.dataset.key,
+              "1"
+            );
+
+          } else {
+
+            localStorage.removeItem(
+              checkbox.dataset.key
+            );
+
+          }
+
+        });
+
+      });
+
+
+    /* --------------------------------------------------
+       TIMER
+    -------------------------------------------------- */
 
     document
       .querySelectorAll(".timer")
@@ -170,44 +282,420 @@ fetch("rezepte/" + id + ".json")
 
       button.disabled = true;
 
-      const timer = setInterval(() => {
 
-        seconds--;
+      const timer =
+        setInterval(() => {
 
-        const h =
-          Math.floor(seconds / 3600);
-
-        const m =
-          Math.floor((seconds % 3600) / 60);
-
-        const s =
-          seconds % 60;
-
-        button.textContent =
-          "⏱ " +
-          String(h).padStart(2, "0") +
-          ":" +
-          String(m).padStart(2, "0") +
-          ":" +
-          String(s).padStart(2, "0");
+          seconds--;
 
 
-        if (seconds <= 0) {
+          const h =
+            Math.floor(seconds / 3600);
 
-          clearInterval(timer);
+          const m =
+            Math.floor(
+              (seconds % 3600) / 60
+            );
+
+          const s =
+            seconds % 60;
+
 
           button.textContent =
-            "⏰ Fertig!";
+            "⏱ " +
+            String(h).padStart(2, "0") +
+            ":" +
+            String(m).padStart(2, "0") +
+            ":" +
+            String(s).padStart(2, "0");
 
-          button.disabled = false;
 
-        }
+          if (seconds <= 0) {
 
-      }, 1000);
+            clearInterval(timer);
+
+            button.textContent =
+              "⏰ Fertig!";
+
+            button.disabled = false;
+
+          }
+
+        }, 1000);
 
     }
 
   })
+
+
+  /* --------------------------------------------------
+     FEHLER
+  -------------------------------------------------- */
+
+  .catch(error => {
+
+    console.error(error);
+
+    document.getElementById("app").innerHTML = `
+
+      <section class="panel">
+
+        <h2>Rezept nicht gefunden</h2>
+
+        <p>
+          Das Rezept konnte nicht geladen werden.
+        </p>
+
+        <p>
+          <a href="index.html">
+            Zurück zum Backbuch
+          </a>
+        </p>
+
+      </section>
+
+    `;
+
+  });
+
+</script>
+
+</body>
+
+</html>
+```
+<!doctype html>
+<html lang="de">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rezept</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">← Mein Backbuch</a>
+</header>
+
+<main id="app"></main>
+
+<script>
+
+const id =
+  new URLSearchParams(location.search).get("id") || "pizza-4";
+
+
+fetch("rezepte/" + id + ".json")
+  .then(r => {
+
+    if (!r.ok) {
+      throw new Error("Rezept konnte nicht geladen werden");
+    }
+
+    return r.json();
+
+  })
+  .then(r => {
+
+    document.title = r.title;
+
+
+    /* --------------------------------------------------
+       REZEPTKOPF
+    -------------------------------------------------- */
+
+    const images = r.images && r.images.length
+      ? `
+        <div class="recipe-images">
+          ${r.images.map(img => `
+            <img src="images/${img}" alt="${r.title}">
+          `).join("")}
+        </div>
+      `
+      : "";
+
+
+    document.getElementById("app").innerHTML = `
+
+      <section class="recipe-head">
+
+        <span class="tag">${r.category}</span>
+
+        <h1>${r.title}</h1>
+
+        <p>${r.portions} Teiglinge</p>
+
+        ${images}
+
+      </section>
+
+
+      <section class="recipe-sections" id="recipe-sections"></section>
+
+    `;
+
+
+    const container =
+      document.getElementById("recipe-sections");
+
+
+    /* --------------------------------------------------
+       ABSCHNITTE
+    -------------------------------------------------- */
+
+    r.steps.forEach((step, stepIndex) => {
+
+      /*
+       * Zutaten werden über "stage" zugeordnet.
+       *
+       * Bei deinen Schusterjungen heißt der Schritt
+       * z.B. "Haupteig kneten + 2 h Stockgare",
+       * während die Zutaten den stage "Hauptteig" haben.
+       *
+       * Deshalb suchen wir zuerst nach einem passenden
+       * stage-Namen.
+       */
+
+      let stage = "";
+
+      if (step.title.toLowerCase().includes("sauerteig")) {
+        stage = "Sauerteig";
+      }
+
+      else if (
+        step.title.toLowerCase().includes("haupt")
+      ) {
+        stage = "Hauptteig";
+      }
+
+
+      const ingredients = r.ingredients.filter(
+        x => x.stage === stage
+      );
+
+
+      const section =
+        document.createElement("section");
+
+      section.className =
+        "recipe-section";
+
+
+      section.innerHTML = `
+
+        <h2>
+          ${step.title}
+          <span class="step-meta">
+            · Tag ${step.day}
+            · ${step.time}
+            · ${step.duration}
+          </span>
+        </h2>
+
+
+        <div class="recipe-grid">
+
+          <div class="recipe-left">
+
+            ${
+              ingredients.length
+                ? ingredients.map((x, ingredientIndex) => {
+
+                    const key =
+                      `${r.id}-step${stepIndex}-ingredient${ingredientIndex}`;
+
+                    const checked =
+                      localStorage.getItem(key) === "1";
+
+                    return `
+
+                      <label class="ingredient-check">
+
+                        <input
+                          type="checkbox"
+                          data-key="${key}"
+                          ${checked ? "checked" : ""}
+                        >
+
+                        <span>
+                          <b>
+                            ${x.amount.toLocaleString('de-DE')}
+                          </b>
+                          ${x.unit}
+                          ${x.name}
+                        </span>
+
+                      </label>
+
+                    `;
+
+                  }).join("")
+
+                : `
+
+                  <label class="ingredient-check">
+
+                    <input
+                      type="checkbox"
+                      data-key="${r.id}-step${stepIndex}"
+                    >
+
+                    <span>
+                      ${
+                        step.title
+                          .toLowerCase()
+                          .includes("teiglinge")
+                          ? "9 Teiglinge · 2 h Stückgare"
+                          : step.title
+                      }
+                    </span>
+
+                  </label>
+
+                `
+            }
+
+          </div>
+
+
+          <div class="recipe-right">
+
+            <p>${step.text}</p>
+
+            ${
+              step.duration !== "00:00"
+                ? `
+                  <button
+                    class="timer"
+                    data-duration="${step.duration}">
+                    Timer ${step.duration} starten
+                  </button>
+                `
+                : ""
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(section);
+
+    });
+
+
+    /* --------------------------------------------------
+       CHECKBOXEN SPEICHERN
+    -------------------------------------------------- */
+
+    document
+      .querySelectorAll(".ingredient-check input")
+      .forEach(checkbox => {
+
+        checkbox.addEventListener("change", () => {
+
+          if (checkbox.checked) {
+
+            localStorage.setItem(
+              checkbox.dataset.key,
+              "1"
+            );
+
+          } else {
+
+            localStorage.removeItem(
+              checkbox.dataset.key
+            );
+
+          }
+
+        });
+
+      });
+
+
+    /* --------------------------------------------------
+       TIMER
+    -------------------------------------------------- */
+
+    document
+      .querySelectorAll(".timer")
+      .forEach(button => {
+
+        button.onclick = () =>
+          startTimer(
+            button,
+            button.dataset.duration
+          );
+
+      });
+
+
+    function startTimer(button, duration) {
+
+      const [hours, minutes] =
+        duration.split(":").map(Number);
+
+      let seconds =
+        hours * 3600 +
+        minutes * 60;
+
+      button.disabled = true;
+
+
+      const timer =
+        setInterval(() => {
+
+          seconds--;
+
+
+          const h =
+            Math.floor(seconds / 3600);
+
+          const m =
+            Math.floor(
+              (seconds % 3600) / 60
+            );
+
+          const s =
+            seconds % 60;
+
+
+          button.textContent =
+            "⏱ " +
+            String(h).padStart(2, "0") +
+            ":" +
+            String(m).padStart(2, "0") +
+            ":" +
+            String(s).padStart(2, "0");
+
+
+          if (seconds <= 0) {
+
+            clearInterval(timer);
+
+            button.textContent =
+              "⏰ Fertig!";
+
+            button.disabled = false;
+
+          }
+
+        }, 1000);
+
+    }
+
+  })
+
+
+  /* --------------------------------------------------
+     FEHLER
+  -------------------------------------------------- */
 
   .catch(error => {
 
