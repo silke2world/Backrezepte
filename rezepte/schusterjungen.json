@@ -1,27 +1,75 @@
-{
-  "id": "schusterjungen",
-  "title": "Schusterjungen",
-  "category": "Brötchen",
-  "portions": 9,
-  "ingredients": [
-    {
-      "stage": "Sauerteig",
-      "name": "ASG Roggen",
-      "amount": 40,
-      "unit": "g"
-    },
-    {
-      "stage": "Sauerteig",
-      "name": "Wasser",
-      "amount": 140,
-      "unit": "g"
-    },
-    {
-      "stage": "Sauerteig",
-      "name": "Roggenvollkorn",
-      "amount": 140,
-      "unit": "g"
-    }
-  ],
+"ingredients": [
+  {
+    "stage": "Sauerteig",
+    "name": "ASG Roggen",
+    "amount": 40,
+    "unit": "g"
+  },
+  {
+    "stage": "Sauerteig",
+    "name": "Wasser",
+    "amount": 140,
+    "unit": "g"
+  },
+  {
+    "stage": "Sauerteig",
+    "name": "Roggenvollkorn",
+    "amount": 140,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Sauerteig",
+    "amount": 320,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Wasser",
+    "amount": 210,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Hefe",
+    "amount": 5,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Rübenkraut",
+    "amount": 15,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Weizen 550",
+    "amount": 180,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Weizenvollkorn 1150",
+    "amount": 50,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Roggen Vollkorn",
+    "amount": 90,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Roggen 997",
+    "amount": 110,
+    "unit": "g"
+  },
+  {
+    "stage": "Hauptteig",
+    "name": "Salz",
+    "amount": 15,
+    "unit": "g"
+  }
+],
   "steps": []
-}
