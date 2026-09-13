@@ -1,22 +1,121 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mein Backbuch</title><link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mein Backbuch</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header><h1>Mein Backbuch</h1><p>Rezepte · Backzeiten · Backmodus</p></header>
+
+<header>
+  <h1>Mein Backbuch</h1>
+  <p>Rezepte · Backzeiten · Backmodus</p>
+</header>
+
 <main>
-<section class="hero"><h2>Meine Rezepte</h2><input id="search" placeholder="Rezept suchen …"></section>
+
+<section class="hero">
+  <h2>Meine Rezepte</h2>
+  <input id="search" placeholder="Rezept suchen …">
+</section>
+
 <div id="recipes"></div>
+
 </main>
+
 <script>
-const recipes=[{file:"rezepte/pizza-4.json"}];
-const el=document.getElementById("recipes"), search=document.getElementById("search");
-async function load(){const data=await Promise.all(recipes.map(x=>fetch(x.file).then(r=>r.json())));
-function render(){const q=search.value.toLowerCase();el.innerHTML=data.filter(r=>r.title.toLowerCase().includes(q)).map(r=>`
-<article class="card"><div><span class="tag">${r.category}</span><h2>${r.title}</h2><p>${r.portions} Teiglinge · ${r.ingredients.reduce((s,x)=>s+x.amount,0).toLocaleString('de-DE')} g Zutaten</p>
-<a class="button" href="rezept.html?id=${r.id}">Rezept öffnen</a></div></article>`).join("")}
-render();search.oninput=render}
+
+const el = document.getElementById("recipes");
+const search = document.getElementById("search");
+
+let data = [];
+
+async function load() {
+
+  try {
+
+    // Rezeptliste laden
+    const index = await fetch("rezepte.json?v=" + Date.now())
+      .then(r => {
+        if (!r.ok) throw new Error("rezepte.json konnte nicht geladen werden");
+        return r.json();
+      });
+
+    // Alle JSON-Rezepte laden
+    data = await Promise.all(
+      index.recipes.map(file =>
+        fetch("rezepte/" + file + "?v=" + Date.now())
+          .then(r => {
+            if (!r.ok) throw new Error(file + " konnte nicht geladen werden");
+            return r.json();
+          })
+      )
+    );
+
+    render();
+
+  } catch (error) {
+
+    console.error(error);
+
+    el.innerHTML = `
+      <p>
+        Die Rezepte konnten nicht geladen werden.
+      </p>
+    `;
+
+  }
+}
+
+
+function render() {
+
+  const q = search.value.toLowerCase();
+
+  el.innerHTML = data
+    .filter(r =>
+      r.title.toLowerCase().includes(q)
+    )
+    .map(r => `
+
+      <article class="card">
+
+        <div>
+
+          <span class="tag">${r.category}</span>
+
+          <h2>${r.title}</h2>
+
+          <p>
+            ${r.portions} Teiglinge ·
+            ${r.ingredients
+              .reduce((s, x) => s + x.amount, 0)
+              .toLocaleString('de-DE')} g Zutaten
+          </p>
+
+          <a
+            class="button"
+            href="rezept.html?id=${encodeURIComponent(r.id)}">
+            Rezept öffnen
+          </a>
+
+        </div>
+
+      </article>
+
+    `)
+    .join("");
+
+}
+
+
+search.oninput = render;
+
 load();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
