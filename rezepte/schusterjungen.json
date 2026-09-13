@@ -2,7 +2,7 @@
   "id": "schusterjungen",
   "title": "Schusterjungen",
   "category": "Brötchen",
-  "portions": 4,
+  "portions": 9,
   "ingredients": [
     {
       "stage": "Sauerteig",
@@ -77,15 +77,21 @@
       "unit": "g"
     }
   ],
-  "steps": 
-  [
-    {
-      "day": 1,
-      "time": "22:00",
-      "duration": "00:10",
-      "title": "Sauerteig",
-      "text": "Alle Zutaten für den Sauerteig in einem Weckglas (1L oder mehr) vermischen, so dass keine Mehlnester mehr vorhanden sind. Höhe des Teigs mit einem Gummiband markieren."
-    }
+  "steps": [
+  {
+    "day": 1,
+    "time": "22:00",
+    "duration": "00:10",
+    "title": "Sauerteig",
+    "text": "Alle Zutaten für den Sauerteig in einem Weckglas (1L oder mehr) vermischen, so dass keine Mehlnester mehr vorhanden sind. Höhe des Teigs mit einem Gummiband markieren."
+  },
+  {
+    "day": 2,
+    "time": "11:00",
+    "duration": "02:15",
+    "title": "Haupteig kneten + 2 h Stockgare",
+    "text": "Alle Zutaten ca. 7 Minuten langsam kneten und den Teig dann in eine geölte eckige Schüssel mit Deckel geben. Bei 23 Grad oder etwas mehr reifen lassen. Im Winter halt im kurz erwärmten Backofen."
+  }
   ]
 }
 
