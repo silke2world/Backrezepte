@@ -1,4 +1,8 @@
 {
+  "id": "schusterjungen",
+  "title": "Schusterjungen",
+  "category": "Brötchen",
+  "portions": 4,
   "ingredients": [
     {
       "stage": "Sauerteig",
