@@ -3,6 +3,25 @@
   "title": "Schusterjungen",
   "category": "Brötchen",
   "portions": 9,
-  "ingredients": [],
+  "ingredients": [
+    {
+      "stage": "Sauerteig",
+      "name": "ASG Roggen",
+      "amount": 40,
+      "unit": "g"
+    },
+    {
+      "stage": "Sauerteig",
+      "name": "Wasser",
+      "amount": 140,
+      "unit": "g"
+    },
+    {
+      "stage": "Sauerteig",
+      "name": "Roggenvollkorn",
+      "amount": 140,
+      "unit": "g"
+    }
+  ],
   "steps": []
 }
