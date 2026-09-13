@@ -18,12 +18,17 @@
 <main>
 
   <section class="recipe-head">
+
     <span id="category" class="tag"></span>
+
     <h1 id="title">Rezept</h1>
+
     <p id="portions"></p>
 
     <div id="recipe-images" class="recipe-images"></div>
+
   </section>
+
 
   <section id="recipe-sections" class="recipe-sections"></section>
 
@@ -35,12 +40,19 @@
 const params = new URLSearchParams(window.location.search);
 const recipeId = params.get("id");
 
-const recipeContainer = document.getElementById("recipe-sections");
+const recipeContainer =
+  document.getElementById("recipe-sections");
+
 
 if (!recipeId) {
-  recipeContainer.innerHTML = "<p>Kein Rezept angegeben.</p>";
+
+  recipeContainer.innerHTML =
+    "<p>Kein Rezept angegeben.</p>";
+
 } else {
+
   loadRecipe();
+
 }
 
 
@@ -50,24 +62,56 @@ async function loadRecipe() {
 
     console.log("Lade Rezept:", recipeId);
 
-    const response = await fetch("rezepte/" + recipeId + ".json");
+
+    const response =
+      await fetch("rezepte/" + recipeId + ".json");
+
 
     if (!response.ok) {
-      throw new Error("Rezept konnte nicht geladen werden.");
+
+      throw new Error(
+        "Rezept konnte nicht geladen werden: " +
+        response.status
+      );
+
     }
 
-    const recipe = await response.json();
 
-    document.title = recipe.title + " – Backrezepte";
+    const recipe =
+      await response.json();
 
-    document.getElementById("title").textContent = recipe.title;
+
+    console.log("Rezept geladen:", recipe);
+
+
+    /*
+     * TITEL
+     */
+
+    document.title =
+      recipe.title + " – Backrezepte";
+
+    document.getElementById("title").textContent =
+      recipe.title;
+
+
+    /*
+     * KATEGORIE
+     */
 
     document.getElementById("category").textContent =
       recipe.category || "";
 
+
+    /*
+     * PORTIONEN
+     */
+
     if (recipe.portions) {
+
       document.getElementById("portions").textContent =
         recipe.portions + " Stück";
+
     }
 
 
@@ -78,14 +122,25 @@ async function loadRecipe() {
     const imageContainer =
       document.getElementById("recipe-images");
 
-    if (recipe.images && recipe.images.length > 0) {
+
+    imageContainer.innerHTML = "";
+
+
+    if (
+      recipe.images &&
+      recipe.images.length
+    ) {
 
       recipe.images.forEach(image => {
 
-        const img = document.createElement("img");
+        const img =
+          document.createElement("img");
 
-        img.src = "images/" + image;
-        img.alt = recipe.title;
+        img.src =
+          "images/" + image;
+
+        img.alt =
+          recipe.title;
 
         imageContainer.appendChild(img);
 
@@ -100,115 +155,490 @@ async function loadRecipe() {
 
     recipeContainer.innerHTML = "";
 
-    recipe.steps.forEach((step, index) => {
 
-      const section =
-        document.createElement("section");
+    if (
+      !recipe.steps ||
+      !recipe.steps.length
+    ) {
 
-      section.className = "recipe-section";
+      recipeContainer.innerHTML =
+        "<p>Keine Rezeptschritte vorhanden.</p>";
 
+      return;
 
-      /*
-       * ÜBERSCHRIFT
-       */
-
-      const heading =
-        document.createElement("h2");
-
-      const title =
-        document.createElement("span");
-
-      title.textContent = step.title;
-
-      heading.appendChild(title);
+    }
 
 
-      /*
-       * Zeitinformationen
-       */
+    recipe.steps.forEach(
+      (step, stepIndex) => {
 
-      const meta =
-        document.createElement("span");
+        /*
+         * Abschnitt
+         */
 
-      meta.className = "step-meta";
+        const section =
+          document.createElement("section");
 
-      let metaText = "";
-
-      if (step.day) {
-        metaText += " · Tag " + step.day;
-      }
-
-      if (step.time) {
-        metaText += " · " + step.time;
-      }
-
-      if (step.duration) {
-        metaText += " · " + formatDuration(step.duration);
-      }
-
-      meta.textContent = metaText;
-
-      heading.appendChild(meta);
-
-      section.appendChild(heading);
+        section.className =
+          "recipe-section";
 
 
-      /*
-       * ZWEI SPALTEN
-       */
+        /*
+         * Überschrift
+         */
 
-      const grid =
-        document.createElement("div");
-
-      grid.className = "recipe-grid";
+        const heading =
+          document.createElement("h2");
 
 
-      /*
-       * LINKE SPALTE
-       */
+        const title =
+          document.createElement("span");
 
-      const left =
-        document.createElement("div");
-
-      left.className = "recipe-left";
+        title.textContent =
+          step.title;
 
 
-      /*
-       * Bei einem stage kommen automatisch
-       * die passenden Zutaten aus ingredients.
-       */
+        heading.appendChild(title);
 
-      if (step.stage) {
 
-        const ingredients =
-          recipe.ingredients.filter(
-            ingredient =>
-              ingredient.stage === step.stage
+        /*
+         * Zeitinformationen
+         */
+
+        const meta =
+          document.createElement("span");
+
+        meta.className =
+          "step-meta";
+
+
+        let metaText = "";
+
+
+        if (step.day) {
+
+          metaText +=
+            " · Tag " + step.day;
+
+        }
+
+
+        if (step.time) {
+
+          metaText +=
+            " · " + step.time;
+
+        }
+
+
+        if (step.duration) {
+
+          metaText +=
+            " · " +
+            formatDuration(step.duration);
+
+        }
+
+
+        meta.textContent =
+          metaText;
+
+
+        heading.appendChild(meta);
+
+        section.appendChild(heading);
+
+
+        /*
+         * Zwei Spalten
+         */
+
+        const grid =
+          document.createElement("div");
+
+        grid.className =
+          "recipe-grid";
+
+
+        /*
+         * LINKE SPALTE
+         */
+
+        const left =
+          document.createElement("div");
+
+        left.className =
+          "recipe-left";
+
+
+        /*
+         * STAGE:
+         * Zutaten automatisch aus ingredients
+         */
+
+        if (step.stage) {
+
+          const ingredients =
+            recipe.ingredients.filter(
+              ingredient =>
+                ingredient.stage === step.stage
+            );
+
+
+          ingredients.forEach(
+            (ingredient, ingredientIndex) => {
+
+              addCheckbox(
+                left,
+                formatIngredient(ingredient),
+                recipe.id +
+                "_step_" +
+                stepIndex +
+                "_ingredient_" +
+                ingredientIndex
+              );
+
+            }
           );
 
-        ingredients.forEach((ingredient, ingredientIndex) => {
-
-          const label =
-            document.createElement("label");
-
-          label.className = "ingredient-check";
+        }
 
 
-          const checkbox =
-            document.createElement("input");
+        /*
+         * NORMALE CHECKLISTE
+         */
 
-          checkbox.type = "checkbox";
+        else if (step.checklist) {
+
+          step.checklist.forEach(
+            (item, itemIndex) => {
+
+              addCheckbox(
+                left,
+                item,
+                recipe.id +
+                "_step_" +
+                stepIndex +
+                "_check_" +
+                itemIndex
+              );
+
+            }
+          );
+
+        }
 
 
-          const key =
-            recipe.id +
-            "_step_" +
-            index +
-            "_ingredient_" +
-            ingredientIndex;
+        /*
+         * RECHTE SPALTE
+         */
 
-          checkbox.checked =
-            localStorage.getItem(key) === "true";
+        const right =
+          document.createElement("div");
+
+        right.className =
+          "recipe-right";
 
 
-          checkbox.addEventListener("change", () => {
+        /*
+         * Beschreibung
+         */
+
+        if (step.text) {
+
+          const text =
+            document.createElement("p");
+
+          text.textContent =
+            step.text;
+
+          right.appendChild(text);
+
+        }
+
+
+        /*
+         * TIMER
+         */
+
+        if (step.duration) {
+
+          const timerButton =
+            document.createElement("button");
+
+          timerButton.className =
+            "timer";
+
+          timerButton.textContent =
+            "⏱ Timer " +
+            formatDuration(step.duration);
+
+
+          timerButton.addEventListener(
+            "click",
+            () => {
+
+              startTimer(
+                step.duration,
+                timerButton
+              );
+
+            }
+          );
+
+
+          right.appendChild(timerButton);
+
+        }
+
+
+        grid.appendChild(left);
+        grid.appendChild(right);
+
+        section.appendChild(grid);
+
+        recipeContainer.appendChild(section);
+
+      }
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      "FEHLER beim Laden des Rezepts:",
+      error
+    );
+
+
+    recipeContainer.innerHTML =
+      "<p>Fehler beim Laden des Rezepts.</p>" +
+      "<p>" +
+      error.message +
+      "</p>";
+
+  }
+
+}
+
+
+/*
+ * CHECKBOX
+ */
+
+function addCheckbox(
+  container,
+  labelText,
+  storageKey
+) {
+
+  const label =
+    document.createElement("label");
+
+  label.className =
+    "ingredient-check";
+
+
+  const checkbox =
+    document.createElement("input");
+
+  checkbox.type =
+    "checkbox";
+
+
+  checkbox.checked =
+    localStorage.getItem(storageKey) === "true";
+
+
+  checkbox.addEventListener(
+    "change",
+    () => {
+
+      localStorage.setItem(
+        storageKey,
+        checkbox.checked
+      );
+
+    }
+  );
+
+
+  const text =
+    document.createElement("span");
+
+  text.textContent =
+    labelText;
+
+
+  label.appendChild(checkbox);
+  label.appendChild(text);
+
+  container.appendChild(label);
+
+}
+
+
+/*
+ * ZUTAT FORMATIEREN
+ */
+
+function formatIngredient(ingredient) {
+
+  let text =
+    ingredient.name;
+
+
+  if (
+    ingredient.amount !== undefined &&
+    ingredient.amount !== null
+  ) {
+
+    text =
+      ingredient.amount +
+      " " +
+      (ingredient.unit || "") +
+      " " +
+      ingredient.name;
+
+  }
+
+
+  return text;
+
+}
+
+
+/*
+ * DAUER FORMATIEREN
+ */
+
+function formatDuration(duration) {
+
+  if (!duration) {
+    return "";
+  }
+
+
+  const parts =
+    duration.split(":");
+
+
+  const hours =
+    parseInt(parts[0], 10);
+
+
+  const minutes =
+    parseInt(parts[1], 10);
+
+
+  if (
+    hours > 0 &&
+    minutes > 0
+  ) {
+
+    return (
+      hours +
+      " h " +
+      minutes +
+      " min"
+    );
+
+  }
+
+
+  if (hours > 0) {
+
+    return hours + " h";
+
+  }
+
+
+  return minutes + " min";
+
+}
+
+
+/*
+ * TIMER
+ */
+
+function startTimer(
+  duration,
+  button
+) {
+
+  if (
+    button.dataset.running === "true"
+  ) {
+
+    return;
+
+  }
+
+
+  const parts =
+    duration.split(":");
+
+
+  let seconds =
+    parseInt(parts[0], 10) * 3600 +
+    parseInt(parts[1], 10) * 60;
+
+
+  if (seconds <= 0) {
+
+    return;
+
+  }
+
+
+  button.dataset.running =
+    "true";
+
+
+  const interval =
+    setInterval(
+      () => {
+
+        const minutes =
+          Math.floor(seconds / 60);
+
+
+        const secs =
+          seconds % 60;
+
+
+        button.textContent =
+          "⏱ " +
+          String(minutes).padStart(2, "0") +
+          ":" +
+          String(secs).padStart(2, "0");
+
+
+        if (seconds <= 0) {
+
+          clearInterval(interval);
+
+          button.textContent =
+            "⏱ Fertig!";
+
+          button.dataset.running =
+            "false";
+
+          return;
+
+        }
+
+
+        seconds--;
+
+      },
+      1000
+    );
+
+}
+
+</script>
+
+</body>
+</html>
