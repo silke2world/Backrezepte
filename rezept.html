@@ -46,6 +46,18 @@ fetch("rezepte/" + id + ".json?v=" + Date.now())
 
         <p>${r.portions} Teiglinge</p>
 
+        ${
+          r.images && r.images.length
+            ? `
+              <div class="recipe-images">
+                ${r.images.map(img => `
+                  <img src="images/${img}" alt="${r.title}">
+                `).join("")}
+              </div>
+            `
+            : ""
+        }
+
       </section>
 
 

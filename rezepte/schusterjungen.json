@@ -3,6 +3,9 @@
   "title": "Schusterjungen",
   "category": "Brötchen",
   "portions": 9,
+  "images": [
+    "schusterjungen_01_m.jpeg"
+  ],
   "ingredients": [
     {
       "stage": "Sauerteig",
