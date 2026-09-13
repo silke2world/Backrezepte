@@ -6,26 +6,26 @@
   "ingredients": [
     {
       "stage": "Sauerteig",
-      "name": "Sauerteig",
-      "amount": 320,
-      "unit": "g"
-    },
-    {
-      "stage": "ASG",
       "name": "ASG Roggen",
       "amount": 40,
       "unit": "g"
     },
     {
-      "stage": "Vorteig",
+      "stage": "Sauerteig",
       "name": "Wasser",
       "amount": 140,
       "unit": "g"
-    },    
+    },
+    {
+      "stage": "Sauerteig",
+      "name": "Roggenvollkorn",
+      "amount": 320,
+      "unit": "g"
+    }    
 	{
-      "stage": "Vorteig",
-      "name": "Roggen Vollkorn",
-      "amount": 140,
+      "stage": "Hauptteig",
+      "name": "Sauerteig",
+      "amount": 320,
       "unit": "g"
     },
     {
@@ -75,7 +75,7 @@
       "name": "Salz",
       "amount": 15,
       "unit": "g"
-    },
+    }
   ],
   "steps": [
     {
