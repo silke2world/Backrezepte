@@ -1,0 +1,116 @@
+```json
+{
+  "id": "baguette",
+  "title": "Baguette – 3 Stück",
+  "category": "Baguette",
+  "portions": 3,
+
+  "ingredients": [
+    {
+      "stage": "Teig",
+      "name": "Weizenmehl T65",
+      "amount": 500,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Wasser",
+      "amount": 350,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Frischhefe",
+      "amount": 2,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Salz",
+      "amount": 10,
+      "unit": "g"
+    }
+  ],
+
+  "steps": [
+    {
+      "day": 1,
+      "time": "18:00",
+      "duration": "00:30",
+      "title": "Teig mischen und kneten",
+      "stage": "Teig",
+      "text": "Mehl mit 330 g Wasser vermischen und 20 bis 30 Minuten ruhen lassen. Die Hefe im restlichen Wasser auflösen und einarbeiten. Salz dazugeben und den Teig nur so lange kneten, bis er glatt und elastisch ist."
+    },
+
+    {
+      "day": 1,
+      "time": "18:30",
+      "duration": "03:00",
+      "title": "Stockgare",
+      "checklist": [
+        "Teig abgedeckt bei 22–23 °C stehen lassen",
+        "2x dehnen und falten (30 min Abstand)",
+        "nach 3 h: in den Kühlschrank stellen"
+      ],
+      "text": "Den Teig abgedeckt bei etwa 22–23 °C anspringen lassen. Nach 30 und 60 Minuten jeweils dehnen und falten. Danach die Stockgare ohne weitere Bearbeitung fortsetzen. Anschließend den Teig abgedeckt bis zum nächsten Tag in den Kühlschrank stellen."
+    },
+
+    {
+      "day": 2,
+      "time": "08:00",
+      "duration": "00:20",
+      "title": "Teig teilen und vorformen",
+      "checklist": [
+        "Teig vorsichtig auf die Arbeitsfläche geben",
+        "In 3 möglichst gleich große Stücke teilen",
+        "Teigstücke vorsichtig vorformen",
+        "20 Minuten entspannen lassen"
+      ],
+      "text": "Den kalten Teig vorsichtig auf die leicht bemehlte Arbeitsfläche geben und in 3 möglichst gleich große Stücke teilen. Die Teiglinge vorsichtig vorformen und 20 Minuten entspannen lassen."
+    },
+
+    {
+      "day": 2,
+      "time": "08:20",
+      "duration": "00:10",
+      "title": "Baguettes formen und Stückgare",
+      "checklist": [
+        "Teiglinge zu etwa 35–40 cm langen Baguettes formen",
+        "mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen"
+        "ca. 45 Minuten bei Raumtemperatur ruhen lassen"
+      ],
+      "text": "Die Teiglinge vorsichtig zu etwa 35–40 cm langen Baguettes formen. Den Schluss gut verschließen und die Baguettes mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen. Die Baguettes abdecken und etwa 45 Minuten bei Raumtemperatur ruhen lassen."
+    },
+
+    {
+      "day": 2,
+      "time": "08:45",
+      "duration": "00:45",
+      "title": "Backofen vorheizen",
+      "checklist": [
+        "Backstahl auf der oberen Schiene einschieben",
+        "Backofen auf 250 °C Ober-/Unterhitze vorheizen",
+        "Lavasteine für Dampf mitaufheizen",
+      ],
+      "text": "Den Backstahl auf einer oberen Schiene einschieben und den Backofen auf 250 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen bis die Temmperatur erreicht ist, dann noch 10 Minuten warten."
+    },
+
+    {
+      "day": 2,
+      "time": "09:15",
+      "duration": "00:25",
+      "title": "Baguettes backen",
+      "checklist": [
+        "Baguettes auf den Schieber legen",
+        "Je Baguette 4–5 schräge Schnitte setzen",
+        "Baguettes einschießen",
+        "Kräftig schwaden",
+        "Nach etwa 10 Minuten Dampf ablassen",
+        "Weitere 10–15 Minuten kräftig ausbacken",
+        "Zum Schluss eventuell die Ofentür kurz öffnen"
+      ],
+      "text": "Die Baguettes auf den Schieber legen und jeweils 4–5 schräge Schnitte setzen. Einschießen und kräftig schwaden. Nach etwa 10 Minuten den Dampf ablassen und die Baguettes weitere 10–15 Minuten kräftig ausbacken. Für eine besonders knusprige Kruste am Ende eventuell die Ofentür kurz öffnen. Auf einem Gitter auskühlen lassen."
+    }
+  ]
+}
+```
