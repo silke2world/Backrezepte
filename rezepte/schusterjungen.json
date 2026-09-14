@@ -2,12 +2,31 @@
   "id": "schusterjungen",
   "title": "Schusterjungen",
   "category": "Brötchen",
+  "tags": [
+    "Brötchen",
+    "Roggen-ASG",
+    "Sauerteig",
+    "Weizen",
+    "Roggen",
+    "Backstahl",
+    "Kühlschrankgare"
+  ],
   "portions": 9,
 
   "images": [
     "schusterjungen_1.jpeg",
     "schusterjungen_2.jpeg"
   ],
+    
+  "overview": {
+    "title": "Überblick",
+    "checklist": [
+      "Teiggewicht: xx g",
+      "Gewicht pro Teigling ca. 110 g",
+      "Gewicht pro Brötchen (gebacken) ca. 93 g"
+    ],
+    "text": "lorem"
+  },
 
   "ingredients": [
     {

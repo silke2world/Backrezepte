@@ -2,14 +2,30 @@
   "id": "pizza-4",
   "title": "Pizza 32-h-Teig (plus/minus)",
   "category": "Pizza",
+  "tags": [
+    "Pizza",
+    "Lievito Madre",
+    "Weizen",
+    "Roggen",
+    "Backstahl",
+    "Kühlschrankgare"
+  ],
   "portions": 4,
 
   "images": [
     "pizza_1.jpeg"
   ],
   
-  "ingredients": [
-    {
+  "overview": {
+    "title": "Überblick",
+    "checklist": [
+      "Teiggewicht: 950 g",
+      "Gewicht pro Teigling ca. 237 g"
+    ],
+    "text": "Die Pizza war aus den Mehlen hergestellt, die ich gerade daheim hatte. Der kleine Roggenanteil soll die Mikroorganismen in der LM zusätzlich anregen und evtl. die Pizza etwas rustikaler machen. Ich verwende einen 8mm-Backstahl in den Maßen 33x38 cm."
+  },
+
+  "ingredients": [    {
       "stage": "Vorteig",
       "name": "Lievito Madre",
       "amount": 80,
