@@ -151,78 +151,79 @@ async function loadRecipe() {
     }
 
 
-      /*
+  /*
    * TAGS
    */
-    
+
   const tagsContainer =
     document.getElementById("tags");
-    
+
   tagsContainer.innerHTML = "";
-    
+
   if (
     recipe.tags &&
     recipe.tags.length
   ) {
-  
+
     recipe.tags.forEach(tag => {
-    
+
       const tagElement =
         document.createElement("span");
-    
+
       tagElement.className =
         "recipe-tag";
-    
+
       tagElement.textContent =
         tag;
-    
+
       tagsContainer.appendChild(tagElement);
-    
+
     });
-  
+
   }
-  
-  
+
+
   /*
    * ÜBERBLICK
    */
-  
+
+    recipeContainer.innerHTML = ""  ;
+
   if (recipe.overview) {
-  
+
     const overview =
       document.createElement("section");
-  
+
     overview.className =
       "recipe-section overview-section";
-  
-  
+
     const heading =
       document.createElement("h2");
-  
+
     heading.textContent =
       recipe.overview.title || "Überblick";
-  
+
     overview.appendChild(heading);
-  
-  
+
+
     const grid =
       document.createElement("div");
-  
+
     grid.className =
       "recipe-grid";
-  
-  
+
+
     /*
      * LINKE SPALTE
      */
-  
+
     const left =
       document.createElement("div");
-  
+
     left.className =
       "recipe-left";
-  
-  
+
+
     if (recipe.overview.checklist) {
     
       recipe.overview.checklist.forEach(
@@ -240,19 +241,19 @@ async function loadRecipe() {
       );
       
     }
-  
-  
+
+
     /*
      * RECHTE SPALTE
      */
-  
+
     const right =
       document.createElement("div");
-  
+
     right.className =
       "recipe-right";
-  
-  
+
+
     if (recipe.overview.text) {
     
       const text =
@@ -264,23 +265,20 @@ async function loadRecipe() {
       right.appendChild(text);
     
     }
-  
-  
+
+
     grid.appendChild(left);
     grid.appendChild(right);
-  
+
     overview.appendChild(grid);
-  
+
     recipeContainer.appendChild(overview);
-  
+
   }
 
     /*
      * REZEPTABSCHNITTE
      */
-
-    recipeContainer.innerHTML = "";
-
 
     if (
       !recipe.steps ||

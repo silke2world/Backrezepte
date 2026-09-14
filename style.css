@@ -101,3 +101,20 @@ header{background:#960e0e;color:white;padding:24px max(20px,calc((100% - 900px)/
   }
 
 }
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.recipe-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #eee;
+  color: #555;
+  border-radius: 999px;
+  font-size: .8rem;
+  line-height: 1.2;
+}
