@@ -1,5 +1,7 @@
 {
   "recipes": [
+    "baguette.json",
+    "baguette_poolish.json",
     "pizza-4.json",
     "schusterjungen.json"
   ]

@@ -19,7 +19,6 @@ header{background:#960e0e;color:white;padding:24px max(20px,calc((100% - 900px)/
   flex-shrink: 0;
 }
 
-```css
 .recipe-sections {
   margin-top: 10px;
 }
@@ -102,4 +101,3 @@ header{background:#960e0e;color:white;padding:24px max(20px,calc((100% - 900px)/
   }
 
 }
-```
