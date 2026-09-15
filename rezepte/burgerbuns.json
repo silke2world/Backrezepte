@@ -1,0 +1,163 @@
+{
+  "id": "burgerbuns",
+  "title": "Brioche Burger Buns",
+  "category": "Brötchen",
+  "tags": [
+    "Burger Buns",
+    "Lievito Madre",
+    "Weizen",
+    "T65",
+    "Roggen",
+    "Backstahl",
+    "Kühlschrankgare"
+  ],
+  "portions": 9,
+
+    
+  "overview": {
+    "title": "Überblick",
+    "checklist": [
+      "Teiggewicht: xx g",
+      "Gewicht pro Teigling ca. xx g"
+    ],
+    "text": "lorem"
+  },
+
+
+  "ingredients": [    {
+      "stage": "Kochstück",
+      "name": "Wasser",
+      "amount": 100,
+      "unit": "g"
+    },
+    {
+      "stage": "Kochstück",
+      "name": "Mehl",
+      "amount": 20,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Lievito Madre",
+      "amount": 20,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Wasser",
+      "amount": 40,
+      "unit": "g"
+    },
+    {
+      "stage": "Vorteig",
+      "name": "Weizenmehl 550",
+      "amount": 80,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Weizenmehl 550",
+      "amount": 80,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Wasser",
+      "amount": 350,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Frischhefe",
+      "amount": 2,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Salz",
+      "amount": 10,
+      "unit": "g"
+    }
+  ],
+
+  "steps": [
+    {
+      "day": 1,
+      "time": "10:00",
+      "duration": "00:05",
+      "title": "Lievito Madre füttern",
+      "stage": "Vorteig",
+      "text": "Die LM mit Wasser aufschwemmen. Dann mit dem Mehl verrühren, verkneten, eine Kugel formen und den Teigball dann am Boden eines Schraubglases festdrücken. Mit einem Gummiband markieren. Acht Stunden später ist die LM hoffentlich gut aufgegangen. "
+    },
+    {
+      "day": 1,
+      "time": "10:05",
+      "duration": "00:05",
+      "title": "Kochstück",
+      "stage": "Kochstück",
+      "text": "Das Mehl mit dem Wasser in einen kleinen Stieltopf geben und unter ständigem Rühren aufkochen. Sobald die Stärke verkleistert, das Kochstück in eine kleine Schüssel geben, zudecken und bis zum Abend in den Kühlschrank stellen. "
+    },
+    {
+      "day": 1,
+      "time": "18:00",
+      "duration": "00:20",
+      "title": "Teig mischen und kneten",
+      "stage": "Teig",
+      "text": "Vorteig, Kochstück und restliche Zutagen bis auf Butter und Salz kn der Maschine mit dem Knethaken zu einem glatten Teig verkneten. Dann nehme ich den Teig raus und forme mir eine Platte auf der Arbeitsplatte. Darauf lege ich kalte Butterscheiben und verteile das Salz darüber. Ich lege jetzt die Platte so zusammen, dass Butter und Salz nicht mehr zu sehen sind. Dieses Paket kommt zurück in die Maschine und wird zuende geknetet. Auf diese Weise wird die Butter m. E. schneller eingearbeitet, als wenn ich die Butterstücke beim Kneten dazugebe. Diesen Trick habe ich aus einem Hefezopfrezept übernommen. "
+    },
+
+    {
+      "day": 1,
+      "time": "18:20",
+      "duration": "03:00 + Nacht",
+      "title": "Stockgare",
+      "checklist": [
+        "Teig abgedeckt bei 22–23 °C stehen lassen",
+        "2x dehnen und falten (30 min Abstand)",
+        "nach 3 h: in den Kühlschrank stellen"
+      ],
+      "text": "Den Teig abgedeckt bei etwa 22–23 °C anspringen lassen. Nach 30 und 60 Minuten jeweils dehnen und falten. Nach insgesamt 3 Stunden den Teig in einer eingeölten Dose mit Deckel bis zum nächsten Tag in den Kühlschrank stellen."
+    },
+
+    {
+      "day": 2,
+      "time": "08:00",
+      "duration": "00:20",
+      "title": "Bürger Buns formen und Stückgare",
+      "checklist": [
+        "in 9 Stücke zu ca. 100 Gramm portionieren",
+        "Teigstücke zu Kugeln formen",
+        "1 Ei"
+      ],
+      "text": "Den kalten Teig auf die leicht bemehlte Arbeitsfläche geben und in 9 möglichst gleich große Stücke teilen. Die Teiglinge haben ca. 100 g. Auf Spannung schleifen und etwas flach drücken. Auf einem Backpapier abgedeckt 60 Minuten ruhen lassen. Wieder vorsichtig flachdrücken. Mit einem verquirlten Ei bestreichen. Nochmal abdecken (ich nehme ein umgedrehtes Backblech) und 40 Minuten stehen lassen."
+    },
+
+    {
+      "day": 2,
+      "time": "08:30",
+      "duration": "00:30",
+      "title": "Backofen vorheizen",
+      "checklist": [
+        "Backstahl auf der mittleren Schiene einschieben",
+        "Backofen auf 200 °C Ober-/Unterhitze vorheizen",
+        "Lavasteine für Dampf mitaufheizen"
+      ],
+      "text": "Den Backstahl auf der mittleren Schiene einschieben und den Backofen auf 200 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen bis die Temmperatur erreicht ist, dann noch ca. 10 Minuten warten."
+    },
+
+    {
+      "day": 2,
+      "time": "09:00",
+      "duration": "00:25",
+      "title": "Backen",
+      "checklist": [
+        "nochmal Eistreiche",
+        "Sesamsamen",
+        "mittlere Schiene",
+        "nach ca. 2 min. kräftig schwaden",
+        "180 Grad"
+      ],
+      "text": "Direkt vor dem Backen die Teiglinge nochmals mit verquirltem Ei bestreichen, mit Sesam bestreuen und dann auf den Backstahl schieben. Nach zwei Minuten ist die Eierstreiche eingetrocknet. Dann 100 bis 200 ml Wasser auf die Lavasteine giessen. Ofentür schließen. Ofentemperatur auf 180 Grad reduzieren. Nach ca. 15 Min. sind die Buns goldgelb. auf einem Kuchengitter auskühlen lassen."
+    }
+  ]
+}
