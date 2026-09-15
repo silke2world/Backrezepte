@@ -6,8 +6,9 @@
     "Burger Buns",
     "Lievito Madre",
     "Weizen",
-    "T65",
-    "Roggen",
+    "Hefe",
+    "Kochstück",
+    "Ei",
     "Backstahl",
     "Kühlschrankgare"
   ],
@@ -17,12 +18,12 @@
   "overview": {
     "title": "Überblick",
     "checklist": [
-      "Teiggewicht: xx g",
-      "Gewicht pro Teigling ca. xx g"
-    ],
-    "text": "lorem"
+      "Teiggewicht: ca. 1040 g",
+      "Gewicht pro Teigling: ca. 116 g",
+      "Hydration: 44,6 % (ohne Eiwasser)"
+      ],
+    "text": "Weiche, fluffige Brioche Burger Buns mit Lievito Madre und Kochstück. Durch Butter und Ei bekommen die Buns eine zarte, wattige Krume und eine schön goldbraune Oberfläche. Die lange, kalte Gare sorgt für ein aromatisches Ergebnis. Die Buns lassen sich gut vorbereiten und passen besonders gut zu saftigen Burgern."
   },
-
 
   "ingredients": [    {
       "stage": "Kochstück",
@@ -32,7 +33,7 @@
     },
     {
       "stage": "Kochstück",
-      "name": "Mehl",
+      "name": "Weizenmehl 550",
       "amount": 20,
       "unit": "g"
     },
@@ -56,20 +57,56 @@
     },
     {
       "stage": "Teig",
+      "name": "Vorteig",
+      "amount": 140,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Kochstück",
+      "amount": 120,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
       "name": "Weizenmehl 550",
-      "amount": 80,
+      "amount": 450,
       "unit": "g"
     },
     {
       "stage": "Teig",
       "name": "Wasser",
-      "amount": 350,
+      "amount": 100,
       "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Eier",
+      "amount": 2,
+      "unit": "Stück"
     },
     {
       "stage": "Teig",
       "name": "Frischhefe",
       "amount": 2,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Backmalz",
+      "amount": 6,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Rübenkraut",
+      "amount": 20,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Butter",
+      "amount": 75,
       "unit": "g"
     },
     {
@@ -122,8 +159,8 @@
     {
       "day": 2,
       "time": "08:00",
-      "duration": "00:20",
-      "title": "Bürger Buns formen und Stückgare",
+      "duration": "02:00",
+      "title": "Burger Buns formen und Stückgare",
       "checklist": [
         "in 9 Stücke zu ca. 100 Gramm portionieren",
         "Teigstücke zu Kugeln formen",
@@ -134,7 +171,7 @@
 
     {
       "day": 2,
-      "time": "08:30",
+      "time": "09:30",
       "duration": "00:30",
       "title": "Backofen vorheizen",
       "checklist": [
@@ -153,7 +190,6 @@
       "checklist": [
         "nochmal Eistreiche",
         "Sesamsamen",
-        "mittlere Schiene",
         "nach ca. 2 min. kräftig schwaden",
         "180 Grad"
       ],
