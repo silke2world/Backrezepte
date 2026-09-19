@@ -1,8 +1,25 @@
 {
   "id": "baguette",
-  "title": "Baguette mit Poolish – 3 Stück",
+  "title": "Baguette mit Poolish",
   "category": "Baguette",
+  "tags": [
+    "Pizza",
+    "Lievito Madre",
+    "Weizen",
+    "Roggen",
+    "Backstahl",
+    "Kühlschrankgare"
+  ],
   "portions": 3,
+    
+  "overview": {
+    "title": "Überblick",
+    "checklist": [
+      "Teiggewicht: xx g",
+      "Gewicht pro Teigling ca. xx g"
+    ],
+    "text": "lorem"
+  },
 
   "ingredients": [
     {
@@ -20,7 +37,7 @@
     {
       "stage": "Poolish",
       "name": "Frischhefe",
-      "amount": 2,
+      "amount": 0.5,
       "unit": "g"
     },
 
@@ -39,13 +56,13 @@
     {
       "stage": "Hauptteig",
       "name": "Wasser",
-      "amount": 145,
+      "amount": 175,
       "unit": "g"
     },
     {
       "stage": "Hauptteig",
       "name": "Frischhefe",
-      "amount": 3,
+      "amount": 2,
       "unit": "g"
     },
     {

@@ -2,7 +2,26 @@
   "id": "baguette",
   "title": "Baguette – 3 Stück",
   "category": "Baguette",
+  "tags": [
+    "Baguette",
+    "Lievito Madre",
+    "Weizen",
+    "T65",
+    "Roggen",
+    "Backstahl",
+    "Kühlschrankgare"
+  ],
   "portions": 3,
+
+    
+  "overview": {
+    "title": "Überblick",
+    "checklist": [
+      "Teiggewicht: xx g",
+      "Gewicht pro Teigling ca. xx g"
+    ],
+    "text": "lorem"
+  },
 
   "ingredients": [
     {
