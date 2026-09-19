@@ -7,7 +7,6 @@
     "Lievito Madre",
     "Weizen",
     "T65",
-    "Roggen",
     "Backstahl",
     "Kühlschrankgare"
   ],
@@ -89,45 +88,45 @@
 
     {
       "day": 2,
-      "time": "08:20",
-      "duration": "00:10",
+      "time": "08:30",
+      "duration": "00:15",
       "title": "Baguettes formen und Stückgare",
       "checklist": [
         "Teiglinge zu etwa 35–40 cm langen Baguettes formen",
         "mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen",
         "ca. 45 Minuten bei Raumtemperatur ruhen lassen"
       ],
-      "text": "Die Teiglinge vorsichtig zu etwa 35–40 cm langen Baguettes formen. Den Schluss gut verschließen und die Baguettes mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen. Die Baguettes abdecken und etwa 45 Minuten bei Raumtemperatur ruhen lassen."
+      "text": "Die Teiglinge vorsichtig zu etwa 35 cm langen Baguettes formen. Den Schluss gut verschließen und die Baguettes mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen. Die Baguettes abdecken und etwa 45 Minuten bei Raumtemperatur ruhen lassen."
     },
 
     {
       "day": 2,
-      "time": "08:45",
-      "duration": "00:45",
+      "time": "09:00",
+      "duration": "00:30",
       "title": "Backofen vorheizen",
       "checklist": [
-        "Backstahl auf der oberen Schiene einschieben",
+        "Backstahl auf der mittleren Schiene einschieben",
         "Backofen auf 250 °C Ober-/Unterhitze vorheizen",
         "Lavasteine für Dampf mitaufheizen"
       ],
-      "text": "Den Backstahl auf einer oberen Schiene einschieben und den Backofen auf 250 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen bis die Temmperatur erreicht ist, dann noch 10 Minuten warten."
+      "text": "Den Backstahl auf der mittleren Schiene einschieben und den Backofen auf 250 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen bis die Temmperatur erreicht ist, dann noch 10 Minuten warten."
     },
 
     {
       "day": 2,
-      "time": "09:15",
+      "time": "09:30",
       "duration": "00:25",
       "title": "Baguettes backen",
       "checklist": [
         "Baguettes auf den Schieber legen",
-        "Je Baguette 4–5 schräge Schnitte setzen",
-        "Baguettes einschießen",
-        "Kräftig schwaden",
-        "Nach etwa 10 Minuten Dampf ablassen",
-        "Weitere 10–15 Minuten kräftig ausbacken",
-        "Zum Schluss eventuell die Ofentür kurz öffnen"
+        "je Baguette 4 schräge, lange Schnitte setzen",
+        "einschießen",
+        "kräftig schwaden: 100 ml Wasser auf die Lavasteine",
+        "nach etwa 10 Minuten Dampf ablassen",
+        "weitere 10–15 Minuten kräftig ausbacken",
+        "zum Schluss eventuell die Ofentür kurz öffnen"
       ],
-      "text": "Die Baguettes auf den Schieber legen und jeweils 4–5 schräge Schnitte setzen. Einschießen und kräftig schwaden. Nach etwa 10 Minuten den Dampf ablassen und die Baguettes weitere 10–15 Minuten kräftig ausbacken. Für eine besonders knusprige Kruste am Ende eventuell die Ofentür kurz öffnen. Auf einem Gitter auskühlen lassen."
+      "text": "Die Baguettes auf den Schieber legen und jeweils vier schräge Schnitte setzen. Einschießen und kräftig schwaden. Nach etwa 10 Minuten den Dampf ablassen und die Baguettes weitere 10–15 Minuten kräftig ausbacken. Für eine besonders knusprige Kruste am Ende eventuell die Ofentür kurz öffnen. Auf einem Gitter auskühlen lassen."
     }
   ]
 }
