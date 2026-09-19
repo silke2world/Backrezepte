@@ -12,14 +12,13 @@
   ],
   "portions": 3,
 
-    
   "overview": {
     "title": "Überblick",
     "checklist": [
-      "Teiggewicht: 862 g",
-      "Gewicht pro Teigling ca. 287 g"
+      "Teiggewicht: 922 g",
+      "Gewicht pro Teigling ca. 307 g"
     ],
-    "text": "Baguetteteig abends ansetzen und morgens backen. Wenn ich um 8 Uhr anfange, müssten um 10 Uhr die Baguettes frisch und noch ein bisschen warm auf dem Frühstückstisch stehen."
+    "text": "Baguetteteig abends ansetzen und morgens backen. Wenn ich um 8 Uhr anfange, müssten um 10 Uhr die Baguettes aus dem Ofen kommen."
   },
 
   "ingredients": [
@@ -31,8 +30,14 @@
     },
     {
       "stage": "Teig",
-      "name": "kaltes Wasser",
+      "name": "Wasser",
       "amount": 350,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Lievito Madre",
+      "amount": 60,
       "unit": "g"
     },
     {
@@ -56,7 +61,7 @@
       "duration": "00:30",
       "title": "Teig mischen und kneten",
       "stage": "Teig",
-      "text": "Lievito Madre in 300 g Wasser aufschlemmen. Dann das Mehl untermischen und 20 bis 30 Minuten ruhen lassen. Die Hefe im restlichen Wasser auflösen und einarbeiten. Salz dazugeben und den Teig nur so lange kneten, bis er glatt und elastisch ist."
+      "text": "Mehl mit 330 g Wasser vermischen und 20 bis 30 Minuten ruhen lassen. Die Lievito Madre und die Hefe im restlichen Wasser auflösen und einarbeiten. Salz dazugeben und den Teig nur so lange kneten, bis er glatt und elastisch ist."
     },
 
     {
@@ -67,9 +72,9 @@
       "checklist": [
         "Teig abgedeckt bei 22–23 °C stehen lassen",
         "2x dehnen und falten (30 min Abstand)",
-        "nach 2 h: in den Kühlschrank stellen"
+        "nach 3 h: in den Kühlschrank stellen"
       ],
-      "text": "Den Teig abgedeckt bei etwa 22–23 °C anspringen lassen. Nach 30 und 60 Minuten jeweils dehnen und falten. Danach die Stockgare ohne weitere Bearbeitung fortsetzen. Nach insgesamt 2 Stunden den Teig abgedeckt bis zum nächsten Tag in den Kühlschrank stellen."
+      "text": "Den Teig abgedeckt bei etwa 22–23 °C anspringen lassen. Nach 30 und 60 Minuten jeweils dehnen und falten. Danach die Stockgare ohne weitere Bearbeitung fortsetzen. Anschließend den Teig abgedeckt bis zum nächsten Tag in den Kühlschrank stellen."
     },
 
     {
@@ -83,25 +88,25 @@
         "Teigstücke vorsichtig vorformen",
         "20 Minuten entspannen lassen"
       ],
-      "text": "Den kalten Teig vorsichtig auf die leicht bemehlte Arbeitsfläche geben und in 3 möglichst gleich große Stücke teilen. Die Teiglinge vorsichtig vorformen und 10 Minuten entspannen lassen. Die Luft soll im Teig bleiben."
+      "text": "Den kalten Teig vorsichtig auf die leicht bemehlte Arbeitsfläche geben und in 3 möglichst gleich große Stücke teilen. Die Teiglinge vorsichtig vorformen und 20 Minuten entspannen lassen."
     },
 
     {
       "day": 2,
-      "time": "08:20",
-      "duration": "01:00",
+      "time": "08:30",
+      "duration": "00:15",
       "title": "Baguettes formen und Stückgare",
       "checklist": [
-        "Teiglinge zu knapp 40 cm langen Baguettes formen",
+        "Teiglinge zu etwa 35–40 cm langen Baguettes formen",
         "mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen",
         "ca. 45 Minuten bei Raumtemperatur ruhen lassen"
       ],
-      "text": "Die Teiglinge vorsichtig zu knapp 40 cm langen Baguettes formen. Dazu die lange Seite leicht auf die Arbeitsfläche drücken, sodass der Teig auf der Arbeitsfläche haftet – dabei den Teig möglichst wenig entgasen. Den Teigling der Länge nach auf die anhaftende Stelle falten. Jetzt die Enden dabei leicht auslaufen lassen. Die typische Baguetteform hat dann später etwas krossere Enden. Den Schluss gut verschließen und die Baguettes mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen, eine Falte legen und die beiden anderen Teiglinge genauso bearbeiten. Die Baguettes abdecken und etwa 45 Minuten bei Raumtemperatur ruhen lassen."
+      "text": "Die Teiglinge vorsichtig zu etwa 35 cm langen Baguettes formen. Den Schluss gut verschließen und die Baguettes mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen. Die Baguettes abdecken und etwa 45 Minuten bei Raumtemperatur ruhen lassen."
     },
 
     {
       "day": 2,
-      "time": "08:45",
+      "time": "09:00",
       "duration": "00:30",
       "title": "Backofen vorheizen",
       "checklist": [
@@ -109,12 +114,12 @@
         "Backofen auf 250 °C Ober-/Unterhitze vorheizen",
         "Lavasteine für Dampf mitaufheizen"
       ],
-      "text": "Den Backstahl auf der mittleren Schiene einschieben und den Backofen auf 250 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen bis die Temmperatur erreicht ist, dann noch 10 Minuten warten."
+      "text": "Den Backstahl auf der mittleren Schiene einschieben und den Backofen auf 250 °C Ober-/Unterhitze vorheizen. Den Ofen (mit den Lavasteinen) aufheizen, bis die Temperatur erreicht ist, dann noch 10 Minuten warten."
     },
 
     {
       "day": 2,
-      "time": "09:15",
+      "time": "09:30",
       "duration": "00:25",
       "title": "Baguettes backen",
       "checklist": [
@@ -127,19 +132,6 @@
         "zum Schluss eventuell die Ofentür kurz öffnen"
       ],
       "text": "Die Baguettes auf den Schieber legen und jeweils vier schräge Schnitte setzen. Einschießen und kräftig schwaden. Nach etwa 10 Minuten den Dampf ablassen und die Baguettes weitere 10–15 Minuten kräftig ausbacken. Für eine besonders knusprige Kruste am Ende eventuell die Ofentür kurz öffnen. Auf einem Gitter auskühlen lassen."
-    },
-
-    {
-      "day": 3,
-      "time": "08:00",
-      "duration": "00:10",
-      "title": "Lessons learned",
-      "checklist": [
-        "Backhöhe überdenken",
-        "evtl. möchte ich ein Lochblech kaufen",
-        "Teig mit Weizenvollkorn bzw. Roggen rustikaler machen"
-      ],
-      "text": "Ich weiß noch nicht, wo die optimale Backhöhe ist. Das Backen auf dem Backstahl hat gut funktioniert. Evtl. würde ein Lochblech mit weniger Aufheizzeit klarkommen. Es gibt Lochbleche unter 20 EUR. Und dann möchte ich von 100 % Weißmehl weg. Roggen ist natürlich gar nicht französisch, würde den Mikroorganismen aber vermutlich schmecken. Weizenvollkorn ist immer eine Alternative, weil wir eh eine Mühle haben."
     }
   ]
 }
