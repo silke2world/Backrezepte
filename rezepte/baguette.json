@@ -12,6 +12,12 @@
   ],
   "portions": 3,
 
+    "images": [
+    "baguette_1.jpeg",
+    "baguette_2.jpeg"
+  ],
+
+
   "overview": {
     "title": "Überblick",
     "checklist": [
