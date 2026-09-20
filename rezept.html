@@ -32,15 +32,31 @@
   </section>
 
 
-  <section id="recipe-sections" class="recipe-sections"></section>
+  <!-- ZURÜCKSETZEN -->
+
+  <button
+    type="button"
+    onclick="resetAllCheckboxes()"
+  >
+    Alle Checkboxen zurücksetzen
+  </button>
+
+
+  <section
+    id="recipe-sections"
+    class="recipe-sections"
+  ></section>
 
 </main>
 
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
-const recipeId = params.get("id");
+const params =
+  new URLSearchParams(window.location.search);
+
+const recipeId =
+  params.get("id");
 
 const recipeContainer =
   document.getElementById("recipe-sections");
@@ -62,11 +78,18 @@ async function loadRecipe() {
 
   try {
 
-    console.log("Lade Rezept:", recipeId);
+    console.log(
+      "Lade Rezept:",
+      recipeId
+    );
 
 
     const response =
-      await fetch("rezepte/" + recipeId + ".json");
+      await fetch(
+        "rezepte/" +
+        recipeId +
+        ".json"
+      );
 
 
     if (!response.ok) {
@@ -83,7 +106,10 @@ async function loadRecipe() {
       await response.json();
 
 
-    console.log("Rezept geladen:", recipe);
+    console.log(
+      "Rezept geladen:",
+      recipe
+    );
 
 
     /*
@@ -91,9 +117,12 @@ async function loadRecipe() {
      */
 
     document.title =
-      recipe.title + " – Backrezepte";
+      recipe.title +
+      " – Backrezepte";
 
-    document.getElementById("title").textContent =
+    document.getElementById(
+      "title"
+    ).textContent =
       recipe.title;
 
 
@@ -101,7 +130,9 @@ async function loadRecipe() {
      * KATEGORIE
      */
 
-    document.getElementById("category").textContent =
+    document.getElementById(
+      "category"
+    ).textContent =
       recipe.category || "";
 
 
@@ -111,8 +142,11 @@ async function loadRecipe() {
 
     if (recipe.portions) {
 
-      document.getElementById("portions").textContent =
-        recipe.portions + " Stück";
+      document.getElementById(
+        "portions"
+      ).textContent =
+        recipe.portions +
+        " Stück";
 
     }
 
@@ -122,7 +156,9 @@ async function loadRecipe() {
      */
 
     const imageContainer =
-      document.getElementById("recipe-images");
+      document.getElementById(
+        "recipe-images"
+      );
 
 
     imageContainer.innerHTML = "";
@@ -133,148 +169,199 @@ async function loadRecipe() {
       recipe.images.length
     ) {
 
-      recipe.images.forEach(image => {
+      recipe.images.forEach(
+        image => {
 
-        const img =
-          document.createElement("img");
+          const img =
+            document.createElement(
+              "img"
+            );
 
-        img.src =
-          "images/" + image;
+          img.src =
+            "images/" +
+            image;
 
-        img.alt =
-          recipe.title;
+          img.alt =
+            recipe.title;
 
-        imageContainer.appendChild(img);
-
-      });
-
-    }
-
-
-  /*
-   * TAGS
-   */
-
-  const tagsContainer =
-    document.getElementById("tags");
-
-  tagsContainer.innerHTML = "";
-
-  if (
-    recipe.tags &&
-    recipe.tags.length
-  ) {
-
-    recipe.tags.forEach(tag => {
-
-      const tagElement =
-        document.createElement("span");
-
-      tagElement.className =
-        "recipe-tag";
-
-      tagElement.textContent =
-        tag;
-
-      tagsContainer.appendChild(tagElement);
-
-    });
-
-  }
-
-
-  /*
-   * ÜBERBLICK
-   */
-
-    recipeContainer.innerHTML = ""  ;
-
-  if (recipe.overview) {
-
-    const overview =
-      document.createElement("section");
-
-    overview.className =
-      "recipe-section overview-section";
-
-    const heading =
-      document.createElement("h2");
-
-    heading.textContent =
-      recipe.overview.title || "Überblick";
-
-    overview.appendChild(heading);
-
-
-    const grid =
-      document.createElement("div");
-
-    grid.className =
-      "recipe-grid";
-
-
-    /*
-     * LINKE SPALTE
-     */
-
-    const left =
-      document.createElement("div");
-
-    left.className =
-      "recipe-left";
-
-
-    if (recipe.overview.checklist) {
-    
-      recipe.overview.checklist.forEach(
-        (item, itemIndex) => {
-        
-          addCheckbox(
-            left,
-            item,
-            recipe.id +
-            "_overview_" +
-            itemIndex
+          imageContainer.appendChild(
+            img
           );
-        
+
         }
       );
-      
+
     }
 
 
     /*
-     * RECHTE SPALTE
+     * TAGS
      */
 
-    const right =
-      document.createElement("div");
+    const tagsContainer =
+      document.getElementById(
+        "tags"
+      );
 
-    right.className =
-      "recipe-right";
+
+    tagsContainer.innerHTML =
+      "";
 
 
-    if (recipe.overview.text) {
-    
-      const text =
-        document.createElement("p");
-    
-      text.textContent =
-        recipe.overview.text;
-    
-      right.appendChild(text);
-    
+    if (
+      recipe.tags &&
+      recipe.tags.length
+    ) {
+
+      recipe.tags.forEach(
+        tag => {
+
+          const tagElement =
+            document.createElement(
+              "span"
+            );
+
+          tagElement.className =
+            "recipe-tag";
+
+          tagElement.textContent =
+            tag;
+
+          tagsContainer.appendChild(
+            tagElement
+          );
+
+        }
+      );
+
     }
 
 
-    grid.appendChild(left);
-    grid.appendChild(right);
+    /*
+     * ÜBERBLICK
+     */
 
-    overview.appendChild(grid);
+    recipeContainer.innerHTML =
+      "";
 
-    recipeContainer.appendChild(overview);
 
-  }
+    if (recipe.overview) {
+
+      const overview =
+        document.createElement(
+          "section"
+        );
+
+      overview.className =
+        "recipe-section overview-section";
+
+
+      const heading =
+        document.createElement(
+          "h2"
+        );
+
+      heading.textContent =
+        recipe.overview.title ||
+        "Überblick";
+
+
+      overview.appendChild(
+        heading
+      );
+
+
+      const grid =
+        document.createElement(
+          "div"
+        );
+
+      grid.className =
+        "recipe-grid";
+
+
+      /*
+       * LINKE SPALTE
+       */
+
+      const left =
+        document.createElement(
+          "div"
+        );
+
+      left.className =
+        "recipe-left";
+
+
+      if (recipe.overview.checklist) {
+
+        recipe.overview.checklist.forEach(
+          (item, itemIndex) => {
+
+            addCheckbox(
+              left,
+              item,
+              recipe.id +
+              "_overview_" +
+              itemIndex
+            );
+
+          }
+        );
+
+      }
+
+
+      /*
+       * RECHTE SPALTE
+       */
+
+      const right =
+        document.createElement(
+          "div"
+        );
+
+      right.className =
+        "recipe-right";
+
+
+      if (recipe.overview.text) {
+
+        const text =
+          document.createElement(
+            "p"
+          );
+
+        text.textContent =
+          recipe.overview.text;
+
+        right.appendChild(
+          text
+        );
+
+      }
+
+
+      grid.appendChild(
+        left
+      );
+
+      grid.appendChild(
+        right
+      );
+
+
+      overview.appendChild(
+        grid
+      );
+
+
+      recipeContainer.appendChild(
+        overview
+      );
+
+    }
+
 
     /*
      * REZEPTABSCHNITTE
@@ -297,52 +384,64 @@ async function loadRecipe() {
       (step, stepIndex) => {
 
         /*
-         * Abschnitt
+         * ABSCHNITT
          */
 
         const section =
-          document.createElement("section");
+          document.createElement(
+            "section"
+          );
 
         section.className =
           "recipe-section";
 
 
         /*
-         * Überschrift
+         * ÜBERSCHRIFT
          */
 
         const heading =
-          document.createElement("h2");
+          document.createElement(
+            "h2"
+          );
 
 
         const title =
-          document.createElement("span");
+          document.createElement(
+            "span"
+          );
 
         title.textContent =
           step.title;
 
 
-        heading.appendChild(title);
+        heading.appendChild(
+          title
+        );
 
 
         /*
-         * Zeitinformationen
+         * ZEITINFORMATIONEN
          */
 
         const meta =
-          document.createElement("span");
+          document.createElement(
+            "span"
+          );
 
         meta.className =
           "step-meta";
 
 
-        let metaText = "";
+        let metaText =
+          "";
 
 
         if (step.day) {
 
           metaText +=
-            " · Tag " + step.day;
+            " · Tag " +
+            step.day;
 
         }
 
@@ -350,7 +449,8 @@ async function loadRecipe() {
         if (step.time) {
 
           metaText +=
-            " · " + step.time;
+            " · " +
+            step.time;
 
         }
 
@@ -359,7 +459,9 @@ async function loadRecipe() {
 
           metaText +=
             " · " +
-            formatDuration(step.duration);
+            formatDuration(
+              step.duration
+            );
 
         }
 
@@ -368,17 +470,24 @@ async function loadRecipe() {
           metaText;
 
 
-        heading.appendChild(meta);
+        heading.appendChild(
+          meta
+        );
 
-        section.appendChild(heading);
+
+        section.appendChild(
+          heading
+        );
 
 
         /*
-         * Zwei Spalten
+         * ZWEI SPALTEN
          */
 
         const grid =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         grid.className =
           "recipe-grid";
@@ -389,7 +498,9 @@ async function loadRecipe() {
          */
 
         const left =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         left.className =
           "recipe-left";
@@ -397,7 +508,7 @@ async function loadRecipe() {
 
         /*
          * STAGE:
-         * Zutaten automatisch aus ingredients
+         * ZUTATEN AUTOMATISCH AUS ingredients
          */
 
         if (step.stage) {
@@ -405,16 +516,22 @@ async function loadRecipe() {
           const ingredients =
             recipe.ingredients.filter(
               ingredient =>
-                ingredient.stage === step.stage
+                ingredient.stage ===
+                step.stage
             );
 
 
           ingredients.forEach(
-            (ingredient, ingredientIndex) => {
+            (
+              ingredient,
+              ingredientIndex
+            ) => {
 
               addCheckbox(
                 left,
-                formatIngredient(ingredient),
+                formatIngredient(
+                  ingredient
+                ),
                 recipe.id +
                 "_step_" +
                 stepIndex +
@@ -435,7 +552,10 @@ async function loadRecipe() {
         else if (step.checklist) {
 
           step.checklist.forEach(
-            (item, itemIndex) => {
+            (
+              item,
+              itemIndex
+            ) => {
 
               addCheckbox(
                 left,
@@ -458,25 +578,31 @@ async function loadRecipe() {
          */
 
         const right =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         right.className =
           "recipe-right";
 
 
         /*
-         * Beschreibung
+         * BESCHREIBUNG
          */
 
         if (step.text) {
 
           const text =
-            document.createElement("p");
+            document.createElement(
+              "p"
+            );
 
           text.textContent =
             step.text;
 
-          right.appendChild(text);
+          right.appendChild(
+            text
+          );
 
         }
 
@@ -488,14 +614,19 @@ async function loadRecipe() {
         if (step.duration) {
 
           const timerButton =
-            document.createElement("button");
+            document.createElement(
+              "button"
+            );
 
           timerButton.className =
             "timer";
 
+
           timerButton.textContent =
             "⏱ Timer " +
-            formatDuration(step.duration);
+            formatDuration(
+              step.duration
+            );
 
 
           timerButton.addEventListener(
@@ -511,17 +642,30 @@ async function loadRecipe() {
           );
 
 
-          right.appendChild(timerButton);
+          right.appendChild(
+            timerButton
+          );
 
         }
 
 
-        grid.appendChild(left);
-        grid.appendChild(right);
+        grid.appendChild(
+          left
+        );
 
-        section.appendChild(grid);
+        grid.appendChild(
+          right
+        );
 
-        recipeContainer.appendChild(section);
+
+        section.appendChild(
+          grid
+        );
+
+
+        recipeContainer.appendChild(
+          section
+        );
 
       }
     );
@@ -557,22 +701,36 @@ function addCheckbox(
 ) {
 
   const label =
-    document.createElement("label");
+    document.createElement(
+      "label"
+    );
 
   label.className =
     "ingredient-check";
 
 
   const checkbox =
-    document.createElement("input");
+    document.createElement(
+      "input"
+    );
 
   checkbox.type =
     "checkbox";
 
 
-  checkbox.checked =
-    localStorage.getItem(storageKey) === "true";
+  /*
+   * GESPEICHERTEN ZUSTAND LADEN
+   */
 
+  checkbox.checked =
+    localStorage.getItem(
+      storageKey
+    ) === "true";
+
+
+  /*
+   * ÄNDERUNG SPEICHERN
+   */
 
   checkbox.addEventListener(
     "change",
@@ -588,16 +746,101 @@ function addCheckbox(
 
 
   const text =
-    document.createElement("span");
+    document.createElement(
+      "span"
+    );
 
   text.textContent =
     labelText;
 
 
-  label.appendChild(checkbox);
-  label.appendChild(text);
+  label.appendChild(
+    checkbox
+  );
 
-  container.appendChild(label);
+  label.appendChild(
+    text
+  );
+
+
+  container.appendChild(
+    label
+  );
+
+}
+
+
+/*
+ * ALLE CHECKBOXEN ZURÜCKSETZEN
+ */
+
+function resetAllCheckboxes() {
+
+  /*
+   * SICHERHEITSABFRAGE
+   */
+
+  const confirmed =
+    confirm(
+      "Möchtest du wirklich alle Checkboxen dieses Rezepts zurücksetzen?"
+    );
+
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  /*
+   * ALLE SICHTBAREN CHECKBOXEN
+   * ZURÜCKSETZEN
+   */
+
+  document
+    .querySelectorAll(
+      'input[type="checkbox"]'
+    )
+    .forEach(
+      checkbox => {
+
+        checkbox.checked =
+          false;
+
+      }
+    );
+
+
+  /*
+   * GESPEICHERTE CHECKBOX-ZUSTÄNDE
+   * DIESES REZEPTS LÖSCHEN
+   */
+
+  Object.keys(
+    localStorage
+  ).forEach(
+    key => {
+
+      if (
+        key.startsWith(
+          recipeId + "_"
+        )
+      ) {
+
+        localStorage.removeItem(
+          key
+        );
+
+      }
+
+    }
+  );
+
+
+  console.log(
+    "Alle Checkboxen zurückgesetzt."
+  );
 
 }
 
@@ -606,7 +849,9 @@ function addCheckbox(
  * ZUTAT FORMATIEREN
  */
 
-function formatIngredient(ingredient) {
+function formatIngredient(
+  ingredient
+) {
 
   let text =
     ingredient.name;
@@ -636,10 +881,14 @@ function formatIngredient(ingredient) {
  * DAUER FORMATIEREN
  */
 
-function formatDuration(duration) {
+function formatDuration(
+  duration
+) {
 
   if (!duration) {
+
     return "";
+
   }
 
 
@@ -648,11 +897,17 @@ function formatDuration(duration) {
 
 
   const hours =
-    parseInt(parts[0], 10);
+    parseInt(
+      parts[0],
+      10
+    );
 
 
   const minutes =
-    parseInt(parts[1], 10);
+    parseInt(
+      parts[1],
+      10
+    );
 
 
   if (
@@ -692,7 +947,8 @@ function startTimer(
 ) {
 
   if (
-    button.dataset.running === "true"
+    button.dataset.running ===
+    "true"
   ) {
 
     return;
@@ -705,8 +961,16 @@ function startTimer(
 
 
   let seconds =
-    parseInt(parts[0], 10) * 3600 +
-    parseInt(parts[1], 10) * 60;
+    parseInt(
+      parts[0],
+      10
+    ) *
+    3600 +
+    parseInt(
+      parts[1],
+      10
+    ) *
+    60;
 
 
   if (seconds <= 0) {
@@ -725,7 +989,9 @@ function startTimer(
       () => {
 
         const minutes =
-          Math.floor(seconds / 60);
+          Math.floor(
+            seconds / 60
+          );
 
 
         const secs =
@@ -734,20 +1000,35 @@ function startTimer(
 
         button.textContent =
           "⏱ " +
-          String(minutes).padStart(2, "0") +
+          String(
+            minutes
+          ).padStart(
+            2,
+            "0"
+          ) +
           ":" +
-          String(secs).padStart(2, "0");
+          String(
+            secs
+          ).padStart(
+            2,
+            "0"
+          );
 
 
         if (seconds <= 0) {
 
-          clearInterval(interval);
+          clearInterval(
+            interval
+          );
+
 
           button.textContent =
             "⏱ Fertig!";
 
+
           button.dataset.running =
             "false";
+
 
           return;
 
