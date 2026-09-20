@@ -2,201 +2,432 @@
 <html lang="de">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Mein Backbuch</title>
+  <title>Mein Backbuch</title>
 
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>Meine Rezepte</h1>
-  <p>Rezepte · Backzeiten · Notizen</p>
-</header>
+  <header>
+    <h1>Meine Rezepte</h1>
+    <p>Rezepte · Backzeiten · Notizen</p>
+  </header>
 
-<main>
+  <main>
 
-<section class="hero">
+    <section class="hero">
 
-  <input
-    id="search"
-    placeholder="Rezept suchen …"
-  >
+      <input id="search" placeholder="Rezept suchen …">
 
-</section>
-
-<div id="recipes"></div>
-
-</main>
-
-<script>
-
-const el = document.getElementById("recipes");
-const search = document.getElementById("search");
-
-let data = [];
+    </section>
 
 
-async function load() {
+    <!-- AKTIVER TAG-FILTER -->
 
-  try {
+    <div id="active-filter"></div>
 
-    console.log("1. Lade rezepte.json");
 
-    const response = await fetch("rezepte.json");
+    <!-- REZEPTE -->
 
-    console.log(
-      "rezepte.json Status:",
-      response.status
-    );
+    <div id="recipes"></div>
 
-    if (!response.ok) {
-      throw new Error(
-        "rezepte.json HTTP " + response.status
+  </main>
+
+
+  <script>
+
+    const el =
+      document.getElementById("recipes");
+
+    const search =
+      document.getElementById("search");
+
+    const activeFilter =
+      document.getElementById("active-filter");
+
+
+    let data = [];
+
+
+    /*
+     * TAG AUS URL LESEN
+     */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
       );
-    }
 
-    const index = await response.json();
-
-    console.log(
-      "2. Rezeptliste:",
-      index
-    );
+    const selectedTag =
+      params.get("tag");
 
 
-    data = await Promise.all(
+    /*
+     * REZEPTE LADEN
+     */
 
-      index.recipes.map(async file => {
+    async function load() {
 
-        console.log(
-          "3. Lade:",
-          file
-        );
-
-        const response = await fetch(
-          "rezepte/" + file
-        );
+      try {
 
         console.log(
-          file,
-          "Status:",
+          "1. Lade rezepte.json"
+        );
+
+
+        const response =
+          await fetch("rezepte.json");
+
+
+        console.log(
+          "rezepte.json Status:",
           response.status
         );
 
+
         if (!response.ok) {
+
           throw new Error(
-            file + " HTTP " + response.status
+            "rezepte.json HTTP " +
+            response.status
           );
+
         }
 
-        const recipe =
+
+        const index =
           await response.json();
 
+
         console.log(
-          "4. Rezept geladen:",
-          recipe
+          "2. Rezeptliste:",
+          index
         );
 
-        return recipe;
 
-      })
+        data =
+          await Promise.all(
 
-    );
+            index.recipes.map(
+              async file => {
 
-
-    console.log(
-      "5. Alle Rezepte:",
-      data
-    );
-
-    render();
+                console.log(
+                  "3. Lade:",
+                  file
+                );
 
 
-  } catch (error) {
-
-    console.error(
-      "FEHLER:",
-      error
-    );
-
-    el.innerHTML = `
-      <section class="panel">
-
-        <h2>Fehler beim Laden</h2>
-
-        <p>
-          ${error.message}
-        </p>
-
-        <p>
-          Details stehen in der Browser-Konsole.
-        </p>
-
-      </section>
-    `;
-
-  }
-
-}
+                const response =
+                  await fetch(
+                    "rezepte/" + file
+                  );
 
 
-function render() {
-
-  const q =
-    search.value.toLowerCase();
-
-
-  el.innerHTML = data
-
-    .filter(r =>
-      r.title &&
-      r.title.toLowerCase().includes(q)
-    )
-
-    .map(r => `
-
-      <article class="card">
-
-        <div>
-
-          <span class="tag">
-            ${r.category || ""}
-          </span>
-
-          <h2>
-            ${r.title}
-          </h2>
-
-          <p>
-            ${r.portions || ""} Teiglinge
-          </p>
-
-          <a
-            class="button"
-            href="rezept.html?id=${encodeURIComponent(r.id)}"
-          >
-            Rezept öffnen
-          </a>
-
-        </div>
-
-      </article>
-
-    `)
-
-    .join("");
-
-}
+                console.log(
+                  file,
+                  "Status:",
+                  response.status
+                );
 
 
-search.oninput = render;
+                if (!response.ok) {
 
-load();
+                  throw new Error(
+                    file +
+                    " HTTP " +
+                    response.status
+                  );
 
-</script>
+                }
+
+
+                const recipe =
+                  await response.json();
+
+
+                console.log(
+                  "4. Rezept geladen:",
+                  recipe
+                );
+
+
+                return recipe;
+
+              }
+            )
+
+          );
+
+
+        console.log(
+          "5. Alle Rezepte:",
+          data
+        );
+
+
+        render();
+
+
+      } catch (error) {
+
+        console.error(
+          "FEHLER:",
+          error
+        );
+
+
+        el.innerHTML = `
+
+          <section class="panel">
+
+            <h2>
+              Fehler beim Laden
+            </h2>
+
+            <p>
+              ${error.message}
+            </p>
+
+            <p>
+              Details stehen in der
+              Browser-Konsole.
+            </p>
+
+          </section>
+
+        `;
+
+      }
+
+    }
+
+
+    /*
+     * REZEPTE ANZEIGEN
+     */
+
+    function render() {
+
+      const q =
+        search.value
+          .toLowerCase()
+          .trim();
+
+
+      /*
+       * AKTIVEN TAG ANZEIGEN
+       */
+
+      if (selectedTag) {
+
+        activeFilter.innerHTML = `
+
+          <div class="active-tag">
+
+            <span>
+              Tag:
+              <strong>
+                ${selectedTag}
+              </strong>
+            </span>
+
+            <a href="index.html">
+              ✕ Filter entfernen
+            </a>
+
+          </div>
+
+        `;
+
+      } else {
+
+        activeFilter.innerHTML =
+          "";
+
+      }
+
+
+      /*
+       * REZEPTE FILTERN
+       */
+
+      const filtered =
+        data.filter(recipe => {
+
+
+          /*
+           * SUCHFILTER
+           */
+
+          const matchesSearch =
+            !q ||
+            (
+              recipe.title &&
+              recipe.title
+                .toLowerCase()
+                .includes(q)
+            );
+
+
+          /*
+           * TAGFILTER
+           */
+
+          const matchesTag =
+            !selectedTag ||
+            (
+              recipe.tags &&
+              recipe.tags.some(
+                tag =>
+                  tag.toLowerCase() ===
+                  selectedTag.toLowerCase()
+              )
+            );
+
+
+          return (
+            matchesSearch &&
+            matchesTag
+          );
+
+        });
+
+
+      /*
+       * KEINE TREFFER
+       */
+
+      if (!filtered.length) {
+
+        el.innerHTML = `
+
+          <section class="panel">
+
+            <h2>
+              Keine Rezepte gefunden
+            </h2>
+
+            ${selectedTag
+            ? `
+                  <p>
+                    Es gibt keine Rezepte
+                    mit dem Tag
+                    <strong>
+                      ${selectedTag}
+                    </strong>.
+                  </p>
+                `
+            : `
+                  <p>
+                    Zu deiner Suche wurden
+                    keine Rezepte gefunden.
+                  </p>
+                `
+          }
+
+          </section>
+
+        `;
+
+        return;
+
+      }
+
+
+      /*
+       * REZEPTE AUSGEBEN
+       */
+
+      el.innerHTML =
+
+        filtered
+
+          .map(recipe => `
+
+            <article class="card">
+
+              <div>
+
+                <span class="tag">
+                  ${recipe.category || ""}
+                </span>
+
+
+                <h2>
+                  ${recipe.title}
+                </h2>
+
+
+                <p>
+                  ${recipe.portions || ""}
+                  Teiglinge
+                </p>
+
+
+                ${recipe.tags &&
+              recipe.tags.length
+              ? `
+
+                      <div class="recipe-tags">
+
+                        ${recipe.tags
+                .map(tag => `
+
+                            <a
+                              class="recipe-tag"
+                              href="index.html?tag=${encodeURIComponent(tag)}"
+                            >
+                              ${tag}
+                            </a>
+
+                          `)
+                .join("")
+              }
+
+                      </div>
+
+                    `
+              : ""
+            }
+
+
+                <a
+                  class="button"
+                  href="rezept.html?id=${encodeURIComponent(recipe.id)}"
+                >
+                  Rezept öffnen
+                </a>
+
+              </div>
+
+            </article>
+
+          `)
+
+          .join("");
+
+    }
+
+
+    /*
+     * SUCHE
+     */
+
+    search.oninput =
+      render;
+
+
+    /*
+     * START
+     */
+
+    load();
+
+  </script>
 
 </body>
 
