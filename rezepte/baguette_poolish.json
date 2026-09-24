@@ -5,17 +5,21 @@
   "tags": [
     "Baguette",
     "Weizen",
+    "T67",
     "Roggen",
     "Backstahl",
-    "Poolish"
+    "Poolish",
+    "Lievito Madre"
   ],
   "portions": 3,
   "overview": {
     "title": "Überblick",
     "checklist": [
-      "Teiggewicht: ca. 949 g",
-      "Gewicht pro Teigling ca. 316 g",
-      "Hydration: 67 %"
+      "Teiggewicht: ca. 1010 g",
+      "Gewicht pro Teigling ca. 350 g",
+      "Hydration: 67 %",
+      "Gewicht pro fertiges Baguette: ca. 260 g",
+      "geschätzer Stromverbrauch: ca. 1,7 kWh (ca. 50 Cent)"
     ],
     "text": "Diese Baguettes werden am Vorabend mit einem Poolish dem Füttern der LM vorbereitet, der nachts bei Raumtemperatur reift, und sind mittags an Tag 2 fertig."
   },
@@ -41,19 +45,19 @@
     {
       "stage": "Lievito Madre",
       "name": "Lievite Madre",
-      "amount": 10 g,
+      "amount": 10,
       "unit": "g"
     },
     {
       "stage": "Lievito Madre",
       "name": "Wasser",
-      "amount": 20 g,
+      "amount": 20,
       "unit": "g"
     },
     {
       "stage": "Lievito Madre",
       "name": "Mehl",
-      "amount": 30 g,
+      "amount": 30,
       "unit": "g"
     },
     {
