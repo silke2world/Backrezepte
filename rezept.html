@@ -87,14 +87,9 @@
         );
 
 
-        const response =
-          await fetch(
-            "rezepte/" +
-            recipeId +
-            ".json"
-          );
-
-
+        const response = await fetch(
+          "rezepte/" + recipeId + ".json?v=" + Date.now()
+        );
         if (!response.ok) {
 
           throw new Error(
