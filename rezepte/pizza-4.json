@@ -11,11 +11,9 @@
     "Kühlschrankgare"
   ],
   "portions": 4,
-
   "images": [
     "pizza_1.jpeg"
   ],
-  
   "overview": {
     "title": "Überblick",
     "checklist": [
@@ -24,8 +22,8 @@
     ],
     "text": "Die Pizza war aus den Mehlen hergestellt, die ich gerade daheim hatte. Der kleine Roggenanteil soll die Mikroorganismen in der LM zusätzlich anregen und evtl. die Pizza etwas rustikaler machen. Ich verwende einen 8mm-Backstahl in den Maßen 33x38 cm."
   },
-
-  "ingredients": [    {
+  "ingredients": [
+    {
       "stage": "Vorteig",
       "name": "Lievito Madre",
       "amount": 80,
@@ -64,7 +62,7 @@
     {
       "stage": "Hauptteig",
       "name": "Wasser",
-      "amount": 131.5,
+      "amount": 145,
       "unit": "g"
     },
     {
@@ -88,11 +86,10 @@
     {
       "stage": "Hauptteig",
       "name": "Olivenöl",
-      "amount": 10,
+      "amount": 3,
       "unit": "g"
     }
   ],
-
   "steps": [
     {
       "day": 1,
@@ -102,7 +99,6 @@
       "stage": "Vorteig",
       "text": "Alle Zutaten für den Vorteig vermischen, so dass keine Mehlnester mehr vorhanden sind. Eine Stunde abgedeckt stehen lassen."
     },
-
     {
       "day": 1,
       "time": "11:00",
@@ -111,7 +107,6 @@
       "stage": "Hauptteig",
       "text": "Vorteig, Wasser und Mehl vermischen und ca. 4 Minuten verkneten. Salz dazugeben und zu Ende kneten (Fensterprobe). Dose einölen und Teig hineinlegen. Danach 1 Stunde bei Raumtemperatur, anschließend bis Tag 2 in den Kühlschrank."
     },
-
     {
       "day": 2,
       "time": "08:00",
@@ -124,7 +119,6 @@
       ],
       "text": "4 Pizzaballen formen, in geölte Dosen legen und in den Kühlschrank stellen."
     },
-
     {
       "day": 2,
       "time": "14:00",
@@ -136,7 +130,6 @@
       ],
       "text": "4 h vor dem Pizza-Essen die Teiglinge aus dem Kühlschrank nehmen und bei 23 °C reifen lassen."
     },
-
     {
       "day": 2,
       "time": "17:40",
@@ -149,7 +142,6 @@
       ],
       "text": "20 Minuten vor dem Einschießen den Ofen auf 300 °C Ober-/Unterhitze aufheizen. Der Backstahl ist auf einer der oberen Schienen eingeschoben, so dass noch hinreichend Platz vorhanden ist, um gleich die Pizza einzuschießen."
     },
-
     {
       "day": 2,
       "time": "18:00",
