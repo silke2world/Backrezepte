@@ -1,19 +1,20 @@
 {
-  "id": "baguette",
-  "title": "Baguette – 3 Stück",
+  "id": "baguetteRoggen",
+  "title": "Baguette verkehrt: mit Roggen",
   "category": "Baguette",
   "tags": [
     "Baguette",
     "Lievito Madre",
     "Weizen",
-    "T65",
+    "Roggen",
+    "Dinkel",
     "Backstahl",
     "Kühlschrankgare"
   ],
   "portions": 3,
   "images": [
-    "baguette_1.jpeg",
-    "baguette_2.jpeg"
+    "baguette_R1.jpeg",
+    "baguette_R2.jpeg"
   ],
   "overview": {
     "title": "Überblick",
@@ -29,8 +30,20 @@
   "ingredients": [
     {
       "stage": "Teig",
-      "name": "Weizenmehl T65",
-      "amount": 500,
+      "name": "Weizenmehl 550",
+      "amount": 350,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Roggenmehl 997",
+      "amount": 75,
+      "unit": "g"
+    },
+    {
+      "stage": "Teig",
+      "name": "Dinkelmehl 630",
+      "amount": 75,
       "unit": "g"
     },
     {
@@ -61,7 +74,7 @@
   "steps": [
     {
       "day": 1,
-      "time": "18:00",
+      "time": "19:00",
       "duration": "00:30",
       "title": "Teig mischen und kneten",
       "stage": "Teig",
@@ -69,7 +82,7 @@
     },
     {
       "day": 1,
-      "time": "18:30",
+      "time": "19:30",
       "duration": "03:00",
       "title": "Stockgare",
       "checklist": [
@@ -81,7 +94,7 @@
     },
     {
       "day": 2,
-      "time": "08:00",
+      "time": "10:00",
       "duration": "00:20",
       "title": "Teig teilen und vorformen",
       "checklist": [
@@ -94,11 +107,11 @@
     },
     {
       "day": 2,
-      "time": "08:30",
+      "time": "10:30",
       "duration": "00:15",
       "title": "Baguettes formen und Stückgare",
       "checklist": [
-        "Teiglinge zu etwa 35–40 cm langen Baguettes formen",
+        "Teiglinge zu etwa 35 cm langen Baguettes formen",
         "mit dem Schluss nach oben auf ein bemehltes Bäckerleinen legen",
         "ca. 45 Minuten bei Raumtemperatur ruhen lassen"
       ],
@@ -106,7 +119,7 @@
     },
     {
       "day": 2,
-      "time": "09:00",
+      "time": "11:00",
       "duration": "00:30",
       "title": "Backofen vorheizen",
       "checklist": [
@@ -118,7 +131,7 @@
     },
     {
       "day": 2,
-      "time": "09:30",
+      "time": "11:30",
       "duration": "00:25",
       "title": "Baguettes backen",
       "checklist": [
