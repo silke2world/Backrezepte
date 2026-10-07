@@ -20,7 +20,7 @@
     "title": "Überblick",
     "checklist": [
       "Teiggewicht: ca. 1040 g",
-      "Gewicht pro Teigling: ca. 116 g",
+      "Gewicht pro Teigling: ca. 115 g",
       "Hydration: 44,6 % (ohne Eiwasser)"
     ],
     "text": "Weiche, fluffige Brioche Burger Buns mit Lievito Madre und Kochstück. Durch Butter und Ei bekommen die Buns eine zarte, wattige Krume und eine schön goldbraune Oberfläche. Die lange, kalte Gare sorgt für ein aromatisches Ergebnis. Die Buns lassen sich gut vorbereiten und passen besonders gut zu saftigen Burgern."
@@ -124,7 +124,7 @@
       "duration": "00:05",
       "title": "Lievito Madre füttern",
       "stage": "Vorteig",
-      "text": "Die LM mit Wasser aufschwemmen. Dann mit dem Mehl verrühren, verkneten, eine Kugel formen und den Teigball dann am Boden eines Schraubglases festdrücken. Mit einem Gummiband markieren. Acht Stunden später ist die LM hoffentlich gut aufgegangen. "
+      "text": "Die LM mit Wasser aufschwemmen. Dann mit dem Mehl verrühren, verkneten, eine Kugel formen und den Teigball dann am Boden eines Schraubglases festdrücken. Mit einem Gummiband markieren. Acht Stunden später ist die LM hoffentlich bei Raumtemperatur gut aufgegangen. "
     },
     {
       "day": 1,
@@ -132,7 +132,7 @@
       "duration": "00:05",
       "title": "Kochstück",
       "stage": "Kochstück",
-      "text": "Das Mehl mit dem Wasser in einen kleinen Stieltopf geben und unter ständigem Rühren aufkochen. Sobald die Stärke verkleistert, das Kochstück in eine kleine Schüssel geben, zudecken und bis zum Abend in den Kühlschrank stellen. "
+      "text": "Das Mehl mit dem Wasser in einen kleinen Stieltopf geben und unter ständigem Rühren erhitzen. Sobald die Stärke verkleistert, das Kochstück in eine kleine Schüssel geben, zudecken und bis zum Abend in den Kühlschrank stellen. "
     },
     {
       "day": 1,
@@ -160,11 +160,11 @@
       "duration": "02:00",
       "title": "Burger Buns formen und Stückgare",
       "checklist": [
-        "in 9 Stücke zu ca. 100 Gramm portionieren",
+        "in 9 Stücke zu ca. 110 Gramm portionieren",
         "Teigstücke zu Kugeln formen",
-        "1 Ei"
+        "1 Ei + Sahne + Salz"
       ],
-      "text": "Den kalten Teig auf die leicht bemehlte Arbeitsfläche geben und in 9 möglichst gleich große Stücke teilen. Die Teiglinge haben ca. 100 g. Auf Spannung schleifen und etwas flach drücken. Auf einem Backpapier abgedeckt 60 Minuten ruhen lassen. Wieder vorsichtig flachdrücken. Mit einem verquirlten Ei bestreichen. Nochmal abdecken (ich nehme ein umgedrehtes Backblech) und 40 Minuten stehen lassen."
+      "text": "Den kalten Teig auf die leicht bemehlte Arbeitsfläche geben und in 9 möglichst gleich große Stücke teilen. Die Teiglinge haben ca. 100 g. Auf Spannung schleifen und etwas flach drücken. Auf einem Backpapier abgedeckt 60 Minuten ruhen lassen. Wieder vorsichtig flachdrücken. Ei, Sahne und eine Prise Salz verquirlen und die Buns damit bestreichen. Nochmal abdecken (ich nehme ein umgedrehtes Backblech) und 40 Minuten stehen lassen."
     },
     {
       "day": 2,
@@ -180,7 +180,7 @@
     },
     {
       "day": 2,
-      "time": "09:00",
+      "time": "10:00",
       "duration": "00:25",
       "title": "Backen",
       "checklist": [
