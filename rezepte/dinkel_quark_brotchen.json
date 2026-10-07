@@ -10,29 +10,30 @@
     ],
     "portions": 9,
     "images": [
-        "https://kruemelig.com/wp-content/uploads/2024/03/Schnelle-Dinkel-Quark-Broetchen-mit-Sauerteig-ueber-Nacht-3-300x300.jpg"
+        "xxx.jpg"
     ],
     "overview": {
         "title": "Dinkel-Quark-Brötchen",
         "checklist": [
             "kein Kneten",
             "Übernachtgare im Kühlschrank",
-            "60 min bei Raumtemperatur ruhen lassen",
-            "Bei 230 °C mit und ohne Dampf backen"
+            "525 g Mehl",
+            "345 g Wasser",
+            "66 % Hydration (gerechtnet ohne den Quark"
         ],
-        "text": "Dinkel-Quark-Brötchen mit Sauerteig und Dinkelvollkornmehl. Ein Teil des Vollkornmehls wird als Brühstück mit 150 g kochendem Wasser verarbeitet. Die Brötchen gehen über Nacht im Kühlschrank."
+        "text": "Dinkel-Quark-Brötchen mit Sauerteig und Dinkelvollkornmehl. Ein Teil des Vollkornmehls wird als Kochstück verarbeitet. Die Brötchen gehen über Nacht in den Kühlschrank und brauchen am nächsten Tag knappe 2 Stunden bis sie genießbar sind."
     },
     "ingredients": [
         {
-            "stage": "Brühstück",
+            "stage": "Kochstück",
             "name": "Dinkelvollkornmehl",
-            "amount": 50,
+            "amount": 25,
             "unit": "g"
         },
         {
-            "stage": "Brühstück",
-            "name": "Wasser, kochend",
-            "amount": 150,
+            "stage": "Kochstück",
+            "name": "Wasser",
+            "amount": 100,
             "unit": "g"
         },
         {
@@ -56,7 +57,7 @@
         {
             "stage": "Hauptteig",
             "name": "Wasser",
-            "amount": 170,
+            "amount": 220,
             "unit": "g"
         },
         {
@@ -68,59 +69,53 @@
         {
             "stage": "Hauptteig",
             "name": "Salz",
-            "amount": 1,
-            "unit": "TL"
+            "amount": 9,
+            "unit": "g"
         }
     ],
     "steps": [
         {
             "day": 1,
-            "time": "",
-            "duration": "10 Min.",
-            "title": "Brühstück herstellen",
-            "stage": "Brühstück",
-            "checklist": [],
+            "time": "10:00",
+            "duration": "5 Min.",
+            "title": "Kochstück herstellen",
+            "stage": "Kochstück",
+            "checklist": [
+                "Mehl und Wasser verrühren",
+                "erhitzen"
+            ],
             "text": "Dinkelvollkornmehl mit dem kochenden Wasser gründlich verrühren. Abdecken und vollständig abkühlen lassen."
         },
         {
             "day": 1,
-            "time": "",
+            "time": "18:00 Uhr",
             "duration": "2 Std.",
             "title": "Teig herstellen und anspringen lassen",
             "stage": "Hauptteig",
-            "checklist": [],
-            "text": "Das abgekühlte Brühstück mit allen übrigen Zutaten vermischen. Den Teig etwa zwei Stunden bei Raumtemperatur stehen lassen."
+            "checklist": [
+                "Zutaten vermischen",
+                "2 h anspringen lassen",
+                "Übernachtgare im Kühlschrank"
+            ],
+            "text": "Das abgekühlte Kochstück mit allen übrigen Zutaten vermischen. Den Teig in einer geölten Dose etwa zwei Stunden bei Raumtemperatur anspringen lassen. 2x Coil Folds. Danach zur Übernachtgare in den Kühlschrank. "
         },
-        {
-            "day": 1,
-            "time": "abends",
-            "duration": "über Nacht",
-            "title": "Teig kühlen",
-            "stage": "Kühlschrankgare",
-            "checklist": [],
-            "text": "Den Teig abgedeckt über Nacht in den Kühlschrank stellen."
-        },
+        ,
         {
             "day": 2,
-            "time": "morgens",
-            "duration": "",
+            "time": "9:00",
+            "duration": "10 Min.",
             "title": "Brötchen abstechen und formen",
-            "stage": "Aufarbeiten",
-            "checklist": [],
-            "text": "Den Teig auf eine bemehlte Arbeitsfläche stürzen und mit einer Teigkarte in neun möglichst gleichgroße Stücke stechen. Die Ecken zur gegenüberliegenden Seite einschlagen und mit einem Finger festdrücken. Diese Methode ist sehr zeiteffizient und trotzdem schauen die fertigen Brötchen schön aus. "
+            "stage": "Aufarbeiten und Stückgare",
+            "checklist": [
+                "9 Teiglinge abstechen",
+                "60 Min. abgedeckt reifen lassen"
+            ],
+            ,
+            "text": "Den Teig vorsichtig auf eine bemehlte Arbeitsfläche stürzen und mit einer Teigkarte in neun möglichst gleichgroße Stücke stechen. Die Ecken zur gegenüberliegenden Seite einschlagen und mit einem Finger festdrücken. Diese Methode ist sehr zeiteffizient und trotzdem schauen die fertigen Brötchen schön aus. Die Teiglinge dem gefalteten Teil nach oben etwa 60 Minuten bei Raumtemperatur abgedeckt ruhen lassen."
         },
         {
             "day": 2,
-            "time": "",
-            "duration": "mind. 1 Std.",
-            "title": "Stückgare",
-            "stage": "Gare",
-            "checklist": [],
-            "text": "Die Teiglinge dem gefalteten Teil nach oben etwa 60 Minuten bei Raumtemperatur abgedeckt ruhen lassen."
-        },
-        {
-            "day": 2,
-            "time": "10:00",
+            "time": "9:30",
             "duration": "ca. 30 Min.",
             "title": "Ofen vorheizen",
             "stage": "Backen",
@@ -129,12 +124,27 @@
         },
         {
             "day": 2,
-            "time": "",
+            "time": "10:00 Uhr",
             "duration": "ca. 17 Min.",
             "title": "Brötchen backen",
             "stage": "Backen",
-            "checklist": [],
+            "checklist": [
+                "in den Ofen schieben",
+                "auf 230 °C reduzieren",
+                "10 Min. mit Dampf",
+                "Dampf ablassen",
+                "7 Min. weiter backen"
+            ],
             "text": "Die Dinkel-Quark-Brötchen in den Ofen schieben. Die Temperatur auf 230 °C reduzieren und 10 Minuten mit Dampf backen. Ich nehme die Stufe für Hefegebäck. Anschließend den Dampf ablassen und die Brötchen etwa 7 Minuten ohne Dampf mit Ober-Unterhitze fertig backen."
+        },
+        {
+            "day": 2,
+            "time": "",
+            "duration": "",
+            "title": "Ideen",
+            "stage": "Ideen",
+            "checklist": [],
+            "text": "Ich habe noch Dinkelvollkorn und möchte das verbrauchen. Daher passt das Rezept. Ich wüsste aber gern, ob ich das 630 auch durch Weizen ersetzen kann. Und ich könnte mir vorstellen, die Brötchen nur knapp fertig zu backen und aus Aufbackbrötchen einzufrieren."
         }
     ]
 }
