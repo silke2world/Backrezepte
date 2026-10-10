@@ -3,10 +3,12 @@
     "title": "Dinkel-Quark-Brötchen",
     "category": "Brötchen",
     "tags": [
-        "Dinkel",
+        "Dinkel 630",
         "Dinkelvollkorn",
         "Sauerteig",
-        "Brühstück"
+        "Lievito Madre",
+        "Quark",
+        "Kochstück"
     ],
     "portions": 10,
     "images": [
@@ -62,8 +64,14 @@
         },
         {
             "stage": "Hauptteig",
-            "name": "Sauerteigstarter",
-            "amount": 50,
+            "name": "Lievito Madre",
+            "amount": 80,
+            "unit": "g"
+        },
+        {
+            "stage": "Hauptteig",
+            "name": "Hefe",
+            "amount": 2,
             "unit": "g"
         },
         {
@@ -89,7 +97,7 @@
         {
             "day": 1,
             "time": "18:00 Uhr",
-            "duration": "2 Std.",
+            "duration": "2,5 Std.",
             "title": "Teig herstellen und anspringen lassen",
             "stage": "Hauptteig",
             "checklist": [
@@ -117,8 +125,12 @@
             "duration": "ca. 30 Min.",
             "title": "Ofen vorheizen",
             "stage": "Backen",
-            "checklist": [],
-            "text": "Den Ofen mit Backstahl und Lavasteinenauf 250 °C vorheizen."
+            "checklist": [
+                "auf 250 °C vorheizen ",
+                "Backstahl auf zweitoberster Schiene",
+                "Lavasteine"
+            ],
+            "text": "Den Ofen mit Backstahl und Lavasteinen auf 250 °C vorheizen."
         },
         {
             "day": 2,
