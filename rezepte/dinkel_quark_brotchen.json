@@ -112,7 +112,6 @@
             "time": "9:00",
             "duration": "10 Min.",
             "title": "Brötchen abstechen und formen",
-            "stage": "Aufarbeiten und Stückgare",
             "checklist": [
                 "9 Teiglinge abstechen",
                 "60 Min. abgedeckt reifen lassen"
@@ -124,7 +123,6 @@
             "time": "9:30",
             "duration": "ca. 30 Min.",
             "title": "Ofen vorheizen",
-            "stage": "Backen",
             "checklist": [
                 "auf 250 °C vorheizen ",
                 "Backstahl auf zweitoberster Schiene",
@@ -137,7 +135,6 @@
             "time": "10:00 Uhr",
             "duration": "ca. 17 Min.",
             "title": "Brötchen backen",
-            "stage": "Backen",
             "checklist": [
                 "in den Ofen schieben",
                 "auf 230 °C reduzieren",
@@ -152,7 +149,6 @@
             "time": "",
             "duration": "",
             "title": "Ideen",
-            "stage": "Ideen",
             "checklist": [],
             "text": "Ich habe noch Dinkelvollkorn und möchte das verbrauchen. Daher passt das Rezept. Ich wüsste aber gern, ob ich das 630 auch durch Weizen ersetzen kann. Und ich könnte mir vorstellen, die Brötchen nur knapp fertig zu backen und aus Aufbackbrötchen einzufrieren."
         }
