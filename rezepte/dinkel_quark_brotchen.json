@@ -19,11 +19,11 @@
         "checklist": [
             "kein Kneten",
             "Übernachtgare im Kühlschrank",
-            "525 g Mehl",
-            "345 g Wasser",
-            "66 % Hydration (gerechtnet ohne den Quark"
+            "475 g Mehl",
+            "320 g Wasser",
+            "67 % Hydration (gerechtnet ohne den Quark)"
         ],
-        "text": "Dinkel-Quark-Brötchen mit Sauerteig und Dinkelvollkornmehl. Ein Teil des Vollkornmehls wird als Kochstück verarbeitet. Die Brötchen gehen über Nacht in den Kühlschrank und brauchen am nächsten Tag knappe 2 Stunden bis sie genießbar sind."
+        "text": "Dinkel-Quark-Brötchen mit Sauerteig und Dinkelvollkornmehl. Ein Teil des Vollkornmehls wird als Kochstück verarbeitet. Die Brötchen gehen über Nacht in den Kühlschrank und brauchen am nächsten Tag knappe 2 Stunden bis sie fertig gebacken sind."
     },
     "ingredients": [
         {
@@ -121,7 +121,7 @@
         {
             "day": 2,
             "time": "9:30",
-            "duration": "ca. 30 Min.",
+            "duration": "ca. 40 Min.",
             "title": "Ofen vorheizen",
             "checklist": [
                 "auf 250 °C vorheizen ",
@@ -132,7 +132,7 @@
         },
         {
             "day": 2,
-            "time": "10:00 Uhr",
+            "time": "10:10 Uhr",
             "duration": "ca. 17 Min.",
             "title": "Brötchen backen",
             "checklist": [
@@ -150,7 +150,7 @@
             "duration": "",
             "title": "Ideen",
             "checklist": [],
-            "text": "Ich habe noch Dinkelvollkorn und möchte das verbrauchen. Daher passt das Rezept. Ich wüsste aber gern, ob ich das 630 auch durch Weizen ersetzen kann. Und ich könnte mir vorstellen, die Brötchen nur knapp fertig zu backen und aus Aufbackbrötchen einzufrieren."
+            "text": "Ich habe noch Dinkelvollkorn und möchte das verbrauchen. Daher passt das Rezept. Ich wüsste aber gern, ob ich das 630 auch durch Weizen ersetzen kann. Und ich könnte mir vorstellen, die Brötchen als Aufbackbrötchen einzufrieren. Bei 230 °C etwa 10–12 Minuten mit Dampf backen. Herausnehmen, sobald die Brötchen stabil sind, aber noch kaum Farbe haben. Vollständig auskühlen lassen und luftdicht einfrieren. Direkt aus dem Gefrierschrank in den vorgeheizten Ofen geben. Bei etwa 190–200 °C weitere 8–12 Minuten backen."
         }
     ]
 }
