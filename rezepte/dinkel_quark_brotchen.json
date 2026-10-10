@@ -8,7 +8,7 @@
         "Sauerteig",
         "Brühstück"
     ],
-    "portions": 9,
+    "portions": 10,
     "images": [
         "xxx.jpg"
     ],
@@ -99,7 +99,6 @@
             ],
             "text": "Das abgekühlte Kochstück mit allen übrigen Zutaten vermischen. Den Teig in einer geölten Dose etwa zwei Stunden bei Raumtemperatur anspringen lassen. 2x Coil Folds. Danach zur Übernachtgare in den Kühlschrank. "
         },
-        ,
         {
             "day": 2,
             "time": "9:00",
@@ -110,7 +109,6 @@
                 "9 Teiglinge abstechen",
                 "60 Min. abgedeckt reifen lassen"
             ],
-            ,
             "text": "Den Teig vorsichtig auf eine bemehlte Arbeitsfläche stürzen und mit einer Teigkarte in neun möglichst gleichgroße Stücke stechen. Die Ecken zur gegenüberliegenden Seite einschlagen und mit einem Finger festdrücken. Diese Methode ist sehr zeiteffizient und trotzdem schauen die fertigen Brötchen schön aus. Die Teiglinge dem gefalteten Teil nach oben etwa 60 Minuten bei Raumtemperatur abgedeckt ruhen lassen."
         },
         {
